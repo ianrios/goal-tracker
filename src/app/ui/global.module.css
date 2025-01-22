@@ -1,0 +1,37 @@
+html,
+body {
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.center {
+  padding-inline: auto;
+}
+
+.header {
+  font-size: larger;
+}
+
+/* border styles */
+.border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.borderRounded {
+  border-radius: 0.25rem;
+}
+
+.border-tone-info {
+  border-color: blue;
+}
+.border-tone-neutral {
+  border-color: black;
+}
+.border-tone-alert {
+  border-color: red;
+}
+.border-tone-success {
+  border-color: green;
+}

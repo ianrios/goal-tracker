@@ -1,30 +1,34 @@
-import styles from "@/app/ui/global.module.css";
-import Flex from "@/components/flex/flex";
-import clsx from "clsx";
+"use client";
 import Home from "./tabs/home";
+import { useRouter } from "next/navigation";
+import PageLayout from "@/components/organisms/page-layout/page-layout";
+
+// TODO: move this util constant somewhere else
+
+export const navLinks = [
+  {
+    name: "home",
+    route: "/",
+  },
+  {
+    name: "examples",
+    route: "/examples",
+  },
+];
+
+// TODO: move this util function somewhere else
+export const navigateTo = (
+  router: ReturnType<typeof useRouter>,
+  route: string
+) => {
+  router.push(route);
+};
 
 export default function Page() {
+  // TODO: use all context wrappers here
   return (
-    <Flex
-      col
-      className={clsx(
-        styles["border-tone-success"],
-        styles.border,
-        styles.borderRounded
-      )}
-    >
-      <Flex
-        padding={4}
-        className={clsx(
-          styles["border-tone-alert"],
-          styles.border,
-          styles.borderRounded
-        )}
-        margin={2}
-      >
-        show the nav component here
-      </Flex>
+    <PageLayout>
       <Home />
-    </Flex>
+    </PageLayout>
   );
 }

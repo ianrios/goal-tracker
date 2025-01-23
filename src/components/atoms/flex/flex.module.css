@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+}
+
+/* TODO: could these all be decided by clsx? */
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}

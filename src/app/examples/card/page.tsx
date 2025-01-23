@@ -1,17 +1,18 @@
-import Card from "@/components/card/card";
+import Card from "@/components/molecules/card/card";
 import clsx from "clsx";
-import styles from "@/app/ui/global.module.css";
-import Flex from "@/components/flex/flex";
+import globalStyles from "@/app/ui/global.module.css";
+import Flex from "@/components/atoms/flex/flex";
+import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
   return (
-    <Flex col>
-      <Flex>
+    <PageLayout>
+      <Flex row>
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
@@ -19,9 +20,9 @@ export default function Page() {
         />
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
@@ -29,53 +30,21 @@ export default function Page() {
         />
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
-          )}
-          header="this is a card"
-          body="there should be a lot of space for this kind of element"
-          footer="perhaps this is where buttons could go"
-        />
-      </Flex>
-      <Flex>
-        <Card
-          className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
-          )}
-          header="this is a card"
-          body="there should be a lot of space for this kind of element"
-          footer="perhaps this is where buttons could go"
-        />
-        <Card
-          className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
-          )}
-          header="this is a card"
-          body="there should be a lot of space for this kind of element"
-          footer="perhaps this is where buttons could go"
-        />
-        <Card
-          className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
           footer="perhaps this is where buttons could go"
         />
       </Flex>
-      <Flex>
+      <Flex row>
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
@@ -83,9 +52,9 @@ export default function Page() {
         />
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
@@ -93,15 +62,47 @@ export default function Page() {
         />
         <Card
           className={clsx(
-            styles["border-tone-alert"],
-            styles.border,
-            styles.borderRounded
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
           )}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
           footer="perhaps this is where buttons could go"
         />
       </Flex>
-    </Flex>
+      <Flex row>
+        <Card
+          className={clsx(
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
+          )}
+          header="this is a card"
+          body="there should be a lot of space for this kind of element"
+          footer="perhaps this is where buttons could go"
+        />
+        <Card
+          className={clsx(
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
+          )}
+          header="this is a card"
+          body="there should be a lot of space for this kind of element"
+          footer="perhaps this is where buttons could go"
+        />
+        <Card
+          className={clsx(
+            globalStyles["border-tone-alert"],
+            globalStyles.border,
+            globalStyles.borderRounded
+          )}
+          header="this is a card"
+          body="there should be a lot of space for this kind of element"
+          footer="perhaps this is where buttons could go"
+        />
+      </Flex>
+    </PageLayout>
   );
 }

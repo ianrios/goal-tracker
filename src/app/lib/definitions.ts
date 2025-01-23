@@ -1,14 +1,15 @@
 export type Goal = {
   id: string;
   createdAt: Date;
-  updatedAt: Date;
-  completedAt: Date;
-  archivedAt: Date;
-  deletedAt: Date;
+  updatedAt: Date | null;
+  completedAt: Date | null;
+  archivedAt: Date | null;
+  deletedAt: Date | null;
   title: string;
   info: string;
   deadline: Date;
-  goalType: "life" | "year" | "quarter" | "month" | "week" | "day";
+  // TODO: figure out how to differentiate the types of goals (and life goals do not need a deadline)
+  bucket: "life" | "year" | "quarter" | "month" | "week" | "day";
 };
 
 export type SubGoal = {

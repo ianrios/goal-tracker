@@ -1,0 +1,16 @@
+.cursor {
+  cursor: pointer;
+  user-select: none;
+}
+
+.cursor:hover {
+  /* hover effects */
+}
+
+.cursor:active {
+  /* active effects */
+}
+
+.cursor:focus {
+  /* focus effects */
+}

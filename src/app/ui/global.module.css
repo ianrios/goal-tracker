@@ -1,8 +1,11 @@
 html,
 body {
-  height: 100vh;
+  height: 0vh;
   margin: 0px;
   padding: 0px;
+}
+body {
+  height: 100vh;
 }
 
 .center {

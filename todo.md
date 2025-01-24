@@ -1,11 +1,13 @@
 things to do
 
 - [ ] create a database that i can run locally
-- [ ] create this list of todos for the app
+- [x] create this list of todos for the app
 - [x] i probably dont need two branches but idk
 - [x] create the wip branch
 - [ ] update the base branch so that i get github tracking metrics
-- [ ] create the mvp
+- [x] create the mvp
+- [x] refine the mvp
+- [ ] use the sub goals array on the app to group the goals
 
 MVP:
 
@@ -13,7 +15,9 @@ MVP:
 -
 - MUST HAVE:
 
-manually select what shows up on home page
+manually select what shows up on home page using a star system or something like that to assign priority
+
+tabs: today, all, backlog, unassigned, archived, deleted
 
 manually reassign goals to parent goals
 
@@ -45,6 +49,12 @@ click into goal to see more
 
 external linking
 
+error when trying to set a parent goal to itself
+error when trying to set a child goal to have more than 1 parent
+allow child goal to be parentless
+
+history of changes
+
 -
 -
 - COULD HAVE:
@@ -57,7 +67,12 @@ show list of all deleted
 
 show list of all archived
 
+undo archive (if parent does not exist, use none)
+undo delete (if parent does not exist, use none)
+
 list of life goals (no deadline)
+
+implement bingo
 
 metrics
 

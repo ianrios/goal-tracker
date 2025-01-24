@@ -61,7 +61,13 @@ export default function Drawer(props: DrawerProps) {
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
           <Flex key={chunkIndex} row border tone={tone} mT={2} mX={2}>
             {goalChunk.map((goal) => (
-              <Card key={goal.id} header={goal.title} body={goal.info} />
+              <Card
+                key={goal.id}
+                header={goal.title}
+                body={goal.info}
+                mL={2}
+                mY={2}
+              />
             ))}
           </Flex>
         ))}

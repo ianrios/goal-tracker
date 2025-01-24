@@ -251,6 +251,18 @@ export const tempData: Goal[] = [
     bucket: Buckets.Quarter,
   },
   {
+    id: "8a6e0804-2b18-temp-b79d-d97000f9071t",
+    createdAt: new Date("2025-01-24T13:11:00.741Z"),
+    updatedAt: new Date("2025-01-24T13:11:00.741Z"),
+    completedAt: null,
+    archivedAt: null,
+    deletedAt: null,
+    title: "get new passport photo",
+    info: "",
+    deadline: new Date("2025-01-31T23:59:59.741Z"),
+    bucket: Buckets.Week,
+  },
+  {
     id: "8a6e0804-2b19-temp-b79d-d97027f9071u",
     createdAt: new Date("2025-01-01T13:11:00.741Z"),
     updatedAt: new Date("2025-01-23T13:11:00.741Z"),
@@ -1048,7 +1060,8 @@ export const tempSubGoalData: SubGoal[] = [
     deletedAt: null,
     // get new passport
     parentGoalId: "8a6e0804-2b18-temp-b79d-d97027f9071t",
-    childGoalId: "",
+    // get passport photo
+    childGoalId: "8a6e0804-2b18-temp-b79d-d97000f9071t",
   },
   {
     id: "8a6e0sub-goal-data-b79d-d97027f90008",

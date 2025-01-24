@@ -8,6 +8,7 @@ import IconButton from "@/components/molecules/icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
 import Header from "@/components/molecules/header/header";
 import flexStyles from "../../atoms/flex/flex.module.css";
+import { HasTone } from "@/components/molecules/button/button";
 
 // TODO: move to helper util
 const chunkArray = (array: Goal[], chunkSize: number) => {
@@ -23,26 +24,29 @@ type BaseDrawerProps = Readonly<{
   goals: Goal[];
 }>;
 
-type DrawerProps = BaseDrawerProps & SpacingProps;
+type DrawerProps = BaseDrawerProps & SpacingProps & HasTone;
 
 export default function Drawer(props: DrawerProps) {
-  const { title, goals, ...restSpacingProps } = props;
+  const { title, tone, goals, ...restSpacingProps } = props;
   const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
   return (
     <Flex
       col
+      border
+      tone={tone}
       // TODO: do this override better
       mT={restSpacingProps.mT ?? 2}
       mX={restSpacingProps.mX ?? 2}
       pB={restSpacingProps.pB ?? 2}
       mB={restSpacingProps.mB ?? 2}
-      border
+      {...restSpacingProps}
     >
       <Flex
         row
+        border
+        tone={tone}
         mT={2}
         mX={2}
-        border
         className={clsx(flexStyles["align-items-center"])}
       >
         <IconButton
@@ -55,7 +59,7 @@ export default function Drawer(props: DrawerProps) {
       </Flex>
       {drawerExpanded &&
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
-          <Flex key={chunkIndex} row mT={2} mX={2} border>
+          <Flex key={chunkIndex} row border tone={tone} mT={2} mX={2}>
             {goalChunk.map((goal) => (
               <Card key={goal.id} header={goal.title} body={goal.info} />
             ))}

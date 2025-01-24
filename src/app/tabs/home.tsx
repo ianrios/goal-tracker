@@ -38,12 +38,12 @@ export default function Home() {
   const completedGoals = allGoals.filter((goal) => !!goal.completedAt);
 
   const filteredGoals = [
-    { title: "Yearly Goals", goals: yearlyGoals },
-    { title: "Quarterly Goals", goals: quarterGoals },
-    { title: "Monthly Goals", goals: monthlyGoals },
-    { title: "Weekly Goals", goals: weeklyGoals },
-    { title: "Daily Goals", goals: dailyGoals },
     { title: "Past Due Goals", goals: pastDueGoals },
+    { title: "Daily Goals", goals: dailyGoals },
+    { title: "Weekly Goals", goals: weeklyGoals },
+    { title: "Monthly Goals", goals: monthlyGoals },
+    { title: "Quarterly Goals", goals: quarterGoals },
+    { title: "Yearly Goals", goals: yearlyGoals },
     { title: "Completed Goals", goals: completedGoals },
   ];
 
@@ -65,9 +65,18 @@ export default function Home() {
           name={filterPastDue ? IconName.Filter : IconName.FilterFill}
         />
       </Flex>
-      {filteredGoals.map(({ title, goals }) => (
-        <Drawer key={title} title={title} goals={goals} mB={0} />
-      ))}
+      {filteredGoals.map(
+        ({ title, goals }) =>
+          goals.length > 0 && (
+            <Drawer
+              key={title}
+              title={title}
+              goals={goals}
+              mB={0}
+              tone={title === "Past Due Goals" ? "alert" : "neutral"}
+            />
+          )
+      )}
     </Flex>
   );
 }

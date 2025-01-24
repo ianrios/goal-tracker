@@ -286,8 +286,6 @@ export default function Flex({
     pLValue,
   ];
 
-  console.log({ allSpacingProps });
-
   const defaultToMargin1 =
     allSpacingProps.filter((sp) => sp !== "-").length === 0;
 

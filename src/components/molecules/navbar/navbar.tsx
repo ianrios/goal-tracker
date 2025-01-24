@@ -20,7 +20,6 @@ export default function Navbar(props: NavbarProps) {
   const { navLinks, ...restSpacingProps } = props;
   const router = useRouter();
 
-  console.log({ restSpacingProps });
   return (
     <Flex row {...restSpacingProps} m={0} className={clsx("navbar")}>
       {navLinks.map(({ name, route }) => (

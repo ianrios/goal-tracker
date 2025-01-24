@@ -1,7 +1,7 @@
 import Icon, { BaseIconProps } from "@/components/atoms/icon/icon";
-import Flex, { SpacingProps } from "../../atoms/flex/flex";
+import Flex, { HasBorder, SpacingProps } from "../../atoms/flex/flex";
 
-type IconProps = BaseIconProps & SpacingProps;
+type IconProps = BaseIconProps & SpacingProps & HasBorder;
 
 export function IconFlex(props: IconProps) {
   const { name, ...rest } = props;

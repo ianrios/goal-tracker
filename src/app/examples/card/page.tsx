@@ -1,100 +1,69 @@
 import Card from "@/components/molecules/card/card";
-import clsx from "clsx";
-import globalStyles from "@/app/ui/global.module.css";
 import Flex from "@/components/atoms/flex/flex";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
   return (
     <PageLayout>
-      <Flex
-        row
-        marginTop={2}
-        marginX={2}
-        className={clsx(
-          globalStyles["border-tone-success"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+      <Flex row m={0} mT={2} border>
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          mY={2}
+          mX={0}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          margin={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
       </Flex>
-      <Flex
-        row
-        marginTop={2}
-        marginX={2}
-        className={clsx(
-          globalStyles["border-tone-success"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+      <Flex row m={0} mY={2} border>
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          mY={2}
+          mX={0}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          margin={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
       </Flex>
-      <Flex
-        row
-        margin={2}
-        className={clsx(
-          globalStyles["border-tone-success"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+      <Flex row m={0} border>
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          marginY={2}
-          marginLeft={2}
-          padding={2}
+          mY={2}
+          mX={0}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />
         <Card
-          margin={2}
-          padding={2}
+          m={2}
+          p={2}
           header="this is a card"
           body="there should be a lot of space for this kind of element"
         />

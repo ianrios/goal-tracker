@@ -21,10 +21,11 @@ export default function Page() {
     <PageLayout>
       <Header
         size={3}
-        margin={0}
-        text="the navbar does not have bottom margin by default"
+        mT={3}
+        mB={2}
+        text="the navbar does not have m(argin) or border by default"
       />
-      <Navbar navLinks={exampleNavLinks} />
+      <Navbar navLinks={exampleNavLinks} border />
     </PageLayout>
   );
 }

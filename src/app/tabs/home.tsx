@@ -1,6 +1,4 @@
-import globalStyles from "@/app/ui/global.module.css";
 import Flex from "@/components/atoms/flex/flex";
-import clsx from "clsx";
 import { tempData } from "@/util/temp-data";
 import Drawer from "@/components/organisms/drawer/drawer";
 import { useState } from "react";
@@ -34,7 +32,9 @@ export default function Home() {
   const dailyGoals = allGoals.filter((goal) => filter(goal, Buckets.Day));
 
   // Past due goals can still rely on the date comparison
-  const pastDueGoals = allGoals.filter((goal) => goal.deadline < new Date());
+  const pastDueGoals = allGoals.filter(
+    (goal) => goal.deadline < new Date() && !goal.completedAt
+  );
   const completedGoals = allGoals.filter((goal) => !!goal.completedAt);
 
   const filteredGoals = [
@@ -48,41 +48,25 @@ export default function Home() {
   ];
 
   return (
-    <Flex
-      margin={2}
-      paddingBottom={2}
-      col
-      className={clsx(
-        globalStyles["border-tone-info"],
-        globalStyles.border,
-        globalStyles.borderRounded
-      )}
-    >
-      <Flex
-        row
-        className={clsx(
-          globalStyles["border-tone-info"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+    <Flex col border mT={2} pB={2}>
+      <Flex row border>
         done filter
         <IconButton
           onClick={() => setFilterDone(!filterDone)}
-          padding={2}
-          margin={2}
+          p={2}
+          m={2}
           name={filterDone ? IconName.Filter : IconName.FilterFill}
         />
         past due filter
         <IconButton
           onClick={() => setFilterPastDue(!filterPastDue)}
-          padding={2}
-          margin={2}
+          p={2}
+          m={2}
           name={filterPastDue ? IconName.Filter : IconName.FilterFill}
         />
       </Flex>
       {filteredGoals.map(({ title, goals }) => (
-        <Drawer key={title} title={title} goals={goals} marginBottom={0} />
+        <Drawer key={title} title={title} goals={goals} mB={0} />
       ))}
     </Flex>
   );

@@ -1,6 +1,5 @@
 "use client";
 import Flex, { SpacingProps } from "@/components/atoms/flex/flex";
-import globalStyles from "@/app/ui/global.module.css";
 import clsx from "clsx";
 import { useState } from "react";
 import { Goal } from "@/app/lib/definitions";
@@ -19,45 +18,36 @@ const chunkArray = (array: Goal[], chunkSize: number) => {
   return chunks;
 };
 
-type DrawerProps = Readonly<{
+type BaseDrawerProps = Readonly<{
   title: string;
   goals: Goal[];
 }>;
 
-export default function Drawer({
-  title,
-  goals,
-  marginTop,
-  marginBottom,
-}: DrawerProps & Pick<SpacingProps, "marginTop" | "marginBottom">) {
+type DrawerProps = BaseDrawerProps & SpacingProps;
+
+export default function Drawer(props: DrawerProps) {
+  const { title, goals, ...restSpacingProps } = props;
   const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
   return (
     <Flex
       col
-      marginTop={marginTop ?? 2}
-      marginX={2}
-      paddingBottom={2}
-      marginBottom={marginBottom ?? 2}
-      className={clsx(
-        globalStyles["border-tone-alert"],
-        globalStyles.border,
-        globalStyles.borderRounded
-      )}
+      // TODO: do this override better
+      mT={restSpacingProps.mT ?? 2}
+      mX={restSpacingProps.mX ?? 2}
+      pB={restSpacingProps.pB ?? 2}
+      mB={restSpacingProps.mB ?? 2}
+      border
     >
       <Flex
         row
-        marginTop={2}
-        marginX={2}
-        className={clsx(
-          globalStyles["border-tone-info"],
-          globalStyles.border,
-          globalStyles.borderRounded,
-          flexStyles["align-items-center"]
-        )}
+        mT={2}
+        mX={2}
+        border
+        className={clsx(flexStyles["align-items-center"])}
       >
         <IconButton
-          marginLeft={2}
-          padding={2}
+          mL={2}
+          p={2}
           onClick={() => setDrawerExpanded(!drawerExpanded)}
           name={drawerExpanded ? IconName.DownArrow : IconName.UpArrow}
         />
@@ -65,17 +55,7 @@ export default function Drawer({
       </Flex>
       {drawerExpanded &&
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
-          <Flex
-            key={chunkIndex}
-            row
-            marginTop={2}
-            marginX={2}
-            className={clsx(
-              globalStyles["border-tone-info"],
-              globalStyles.border,
-              globalStyles.borderRounded
-            )}
-          >
+          <Flex key={chunkIndex} row mT={2} mX={2} border>
             {goalChunk.map((goal) => (
               <Card key={goal.id} header={goal.title} body={goal.info} />
             ))}

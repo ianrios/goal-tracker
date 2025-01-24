@@ -1,3 +1,4 @@
+import { Buckets } from "@/app/lib/definitions";
 import Header from "@/components/molecules/header/header";
 import Drawer from "@/components/organisms/drawer/drawer";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
@@ -7,11 +8,16 @@ export default function Page() {
   return (
     <PageLayout>
       <Header
+        mX={0}
+        mY={2}
         size={3}
-        text="the Drawer has marginTop and marginBottom spacing props ONLY - they both default to 2 - override requires passing in margin 0 or something weird"
+        text="the Drawer has mT, mX, pB, & mB props set to 2 but can be overrided"
       />
       <Drawer
-        marginTop={0}
+        mT={0}
+        mX={0}
+        pB={2}
+        mB={2}
         title={"example drawer"}
         goals={[
           {
@@ -24,7 +30,7 @@ export default function Page() {
             title: "Finish This App!",
             info: "keep on chugging!",
             deadline: new Date("2025-12-31T23:59:59.741Z"),
-            bucket: "year",
+            bucket: Buckets.Year,
           },
         ]}
       />

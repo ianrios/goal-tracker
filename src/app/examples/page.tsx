@@ -22,6 +22,8 @@ export default function Page() {
   return (
     <PageLayout>
       <Header
+        mX={0}
+        mY={2}
         size={3}
         text={`here is a list of all the helper files so that I can render out my design
       tokens with all the props applied. the only one that does not have its own
@@ -32,10 +34,10 @@ export default function Page() {
         <Button
           key={route}
           text={route}
-          marginTop={index == 0 ? 0 : 2}
-          marginX={2}
-          padding={2}
-          marginBottom={index + 1 === exampleRoutes.length ? 2 : 0}
+          mT={index == 0 ? 0 : 2}
+          mX={0}
+          p={2}
+          mB={index + 1 === exampleRoutes.length ? 2 : 0}
           onClick={() => navigateTo(router, `/examples/${route}`)}
         />
       ))}

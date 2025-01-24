@@ -1,21 +1,19 @@
 import Flex, {
-  mBottomSelector,
-  mLeftSelector,
-  mRightSelector,
+  mBSelector,
+  mLSelector,
+  mRSelector,
   mSelector,
-  mTopSelector,
+  mTSelector,
   mXSelector,
   mYSelector,
-  pBottomSelector,
-  pLeftSelector,
-  pRightSelector,
+  pBSelector,
+  pLSelector,
+  pRSelector,
   pSelector,
-  pTopSelector,
+  pTSelector,
   pXSelector,
   pYSelector,
 } from "@/components/atoms/flex/flex";
-import clsx from "clsx";
-import globalStyles from "@/app/ui/global.module.css";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
@@ -23,418 +21,209 @@ export default function Page() {
 
   return (
     <PageLayout>
-      <Flex
-        row
-        className={clsx(
-          globalStyles["border-tone-alert"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+      <Flex row border mX={0} mY={2}>
         {/* most used */}
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={val as unknown as keyof typeof mSelector}
-              padding={0}
+              border
+              m={val as unknown as keyof typeof mSelector}
+              p={0}
             >
-              margin {val}
+              m{val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              padding={val as unknown as keyof typeof pSelector}
+              border
+              m={0}
+              p={val as unknown as keyof typeof pSelector}
             >
-              padding {val}
+              p{val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={val as unknown as keyof typeof mSelector}
-              padding={val as unknown as keyof typeof pSelector}
+              border
+              m={val as unknown as keyof typeof mSelector}
+              p={val as unknown as keyof typeof pSelector}
             >
-              margin {val}
-              padding {val}
+              m{val} p{val}
             </Flex>
           ))}
         </Flex>
       </Flex>
-      <Flex
-        row
-        className={clsx(
-          globalStyles["border-tone-alert"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
+      <Flex row border m={0}>
         {/* just X and Y used */}
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              marginX={val as unknown as keyof typeof mXSelector}
-              padding={0}
+              border
+              mX={val as unknown as keyof typeof mXSelector}
+              p={0}
             >
-              margin X {val}
+              mX {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              marginY={val as unknown as keyof typeof mYSelector}
-              padding={0}
+              border
+              mY={val as unknown as keyof typeof mYSelector}
+              p={0}
             >
-              margin Y {val}
+              mY {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingY={val as unknown as keyof typeof pYSelector}
+              border
+              m={0}
+              pY={val as unknown as keyof typeof pYSelector}
             >
-              padding Y {val}
+              pY {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mR={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingX={val as unknown as keyof typeof pXSelector}
+              border
+              m={0}
+              pX={val as unknown as keyof typeof pXSelector}
             >
-              padding X {val}
+              pX {val}
             </Flex>
           ))}
         </Flex>
       </Flex>
-      <Flex
-        row
-        className={clsx(
-          globalStyles["border-tone-alert"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
-        {/* just the padding specific ones */}
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+      <Flex row border mX={0} mY={2}>
+        {/* just the p specific ones */}
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingLeft={val as unknown as keyof typeof pLeftSelector}
+              border
+              m={0}
+              pL={val as unknown as keyof typeof pLSelector}
             >
-              paddingLeft {val}
+              pL {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingRight={val as unknown as keyof typeof pRightSelector}
+              border
+              m={0}
+              pR={val as unknown as keyof typeof pRSelector}
             >
-              paddingRight {val}
+              pR {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingTop={val as unknown as keyof typeof pTopSelector}
+              border
+              m={0}
+              pT={val as unknown as keyof typeof pTSelector}
             >
-              paddingTop {val}
+              pT {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex col border p={2} mY={2} mR={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              margin={0}
-              paddingBottom={val as unknown as keyof typeof pBottomSelector}
+              border
+              m={0}
+              pB={val as unknown as keyof typeof pBSelector}
             >
-              paddingBottom {val}
+              pB {val}
             </Flex>
           ))}
         </Flex>
       </Flex>
-      <Flex
-        row
-        className={clsx(
-          globalStyles["border-tone-alert"],
-          globalStyles.border,
-          globalStyles.borderRounded
-        )}
-      >
-        {/* just the margin specific ones */}
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+      <Flex row border mX={0} mB={2}>
+        {/* just the m specific ones */}
+        <Flex col border p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              padding={0}
-              marginLeft={val as unknown as keyof typeof mLeftSelector}
+              border
+              p={0}
+              mL={val as unknown as keyof typeof mLSelector}
             >
-              marginLeft {val}
+              mL {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex border col p={2} mY={2} mX={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              padding={0}
-              marginRight={val as unknown as keyof typeof mRightSelector}
+              border
+              p={0}
+              mR={val as unknown as keyof typeof mRSelector}
             >
-              marginRight {val}
+              mR {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex border col p={2} mY={2} mX={2}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              padding={0}
-              marginTop={val as unknown as keyof typeof mTopSelector}
+              border
+              p={0}
+              mT={val as unknown as keyof typeof mTSelector}
             >
-              marginTop {val}
+              mT {val}
             </Flex>
           ))}
         </Flex>
-        <Flex
-          padding={2}
-          col
-          className={clsx(
-            globalStyles["border-tone-alert"],
-            globalStyles.border,
-            globalStyles.borderRounded
-          )}
-        >
+        <Flex border col p={2} mY={2} mR={0}>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
-              className={clsx(
-                globalStyles["border-tone-alert"],
-                globalStyles.border,
-                globalStyles.borderRounded
-              )}
-              padding={0}
-              marginBottom={val as unknown as keyof typeof mBottomSelector}
+              border
+              p={0}
+              mB={val as unknown as keyof typeof mBSelector}
             >
-              marginBottom {val}
+              mB {val}
             </Flex>
           ))}
         </Flex>

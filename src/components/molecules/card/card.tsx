@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import Flex, { HasClasses, SpacingProps } from "../../atoms/flex/flex";
 import globalStyles from "@/app/ui/global.module.css";
@@ -24,41 +25,39 @@ export default function Card(
   } = props;
   const borderTone = `border-tone-${tone}`;
 
+  // TODO: pass in border tone to the flex
+
   return (
     <Flex
       col
+      border
       {...restSpacingProps}
-      className={clsx(
-        globalStyles[borderTone],
-        globalStyles.border,
-        globalStyles.borderRounded,
-        className
-      )}
+      className={clsx(globalStyles[borderTone], className)}
     >
-      {/* dynamically set padding y if footer or header are not added */}
+      {/* dynamically set p y if footer or header are not added */}
       {header && (
-        <Flex row paddingTop={2} paddingBottom={1} paddingX={2}>
+        <Flex row pT={2} pB={1} pX={2}>
           {header}
         </Flex>
       )}
       {/* TODO: figure out header border */}
       {body && (
-        <Flex row paddingX={2} paddingY={1}>
+        <Flex row pX={2} pY={1}>
           {body}
         </Flex>
       )}
 
-      <Flex row paddingTop={1} paddingBottom={2} paddingX={2}>
+      <Flex row pT={1} pB={2} pX={2}>
         <IconButton
           name={IconName.Pencil}
-          marginRight={1}
-          padding={1}
+          mR={1}
+          p={1}
           onClick={() => console.log(`edit name for ${header}`)}
         />
         <IconButton
           name={IconName.Gear}
-          marginRight={1}
-          padding={1}
+          mR={1}
+          p={1}
           onClick={() => console.log(`open settings for ${header}`)}
         />
       </Flex>

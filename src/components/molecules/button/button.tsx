@@ -36,17 +36,19 @@ export default function Button(props: ButtonProps) {
   } = props;
   const borderTone = `border-tone-${tone}`;
 
+  // TODO: pass in tone prop to the flex
+
   return (
     <div onClick={onClick}>
       <Flex
         row
+        border
         {...restSpacingProps}
         className={clsx(
           flexStyles["align-items-center"],
           buttonStyles.cursor,
-          globalStyles.border,
-          globalStyles.borderRounded,
           globalStyles[borderTone],
+          "button",
           className
         )}
       >

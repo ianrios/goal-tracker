@@ -9,7 +9,7 @@ export enum FlexDirection {
 
 // TODO: Move these helpers somewhere else
 // margin helpers
-export const marginSelector = {
+export const mSelector = {
   0: "margin-zero",
   1: "margin-one",
   2: "margin-two",
@@ -20,7 +20,7 @@ export const marginSelector = {
   7: "margin-seven",
   8: "margin-eight",
 };
-export const marginXSelector = {
+export const mXSelector = {
   0: "margin-x-zero",
   1: "margin-x-one",
   2: "margin-x-two",
@@ -31,7 +31,7 @@ export const marginXSelector = {
   7: "margin-x-seven",
   8: "margin-x-eight",
 };
-export const marginYSelector = {
+export const mYSelector = {
   0: "margin-y-zero",
   1: "margin-y-one",
   2: "margin-y-two",
@@ -42,7 +42,7 @@ export const marginYSelector = {
   7: "margin-y-seven",
   8: "margin-y-eight",
 };
-export const marginTopSelector = {
+export const mTopSelector = {
   0: "margin-top-zero",
   1: "margin-top-one",
   2: "margin-top-two",
@@ -53,7 +53,7 @@ export const marginTopSelector = {
   7: "margin-top-seven",
   8: "margin-top-eight",
 };
-export const marginBottomSelector = {
+export const mBottomSelector = {
   0: "margin-bottom-zero",
   1: "margin-bottom-one",
   2: "margin-bottom-two",
@@ -64,7 +64,7 @@ export const marginBottomSelector = {
   7: "margin-bottom-seven",
   8: "margin-bottom-eight",
 };
-export const marginLeftSelector = {
+export const mLeftSelector = {
   0: "margin-left-zero",
   1: "margin-left-one",
   2: "margin-left-two",
@@ -75,7 +75,7 @@ export const marginLeftSelector = {
   7: "margin-left-seven",
   8: "margin-left-eight",
 };
-export const marginRightSelector = {
+export const mRightSelector = {
   0: "margin-right-zero",
   1: "margin-right-one",
   2: "margin-right-two",
@@ -88,7 +88,7 @@ export const marginRightSelector = {
 };
 
 // padding helpers
-export const paddingSelector = {
+export const pSelector = {
   0: "padding-zero",
   1: "padding-one",
   2: "padding-two",
@@ -99,7 +99,7 @@ export const paddingSelector = {
   7: "padding-seven",
   8: "padding-eight",
 };
-export const paddingXSelector = {
+export const pXSelector = {
   0: "padding-x-zero",
   1: "padding-x-one",
   2: "padding-x-two",
@@ -110,7 +110,7 @@ export const paddingXSelector = {
   7: "padding-x-seven",
   8: "padding-x-eight",
 };
-export const paddingYSelector = {
+export const pYSelector = {
   0: "padding-y-zero",
   1: "padding-y-one",
   2: "padding-y-two",
@@ -121,7 +121,7 @@ export const paddingYSelector = {
   7: "padding-y-seven",
   8: "padding-y-eight",
 };
-export const paddingTopSelector = {
+export const pTopSelector = {
   0: "padding-top-zero",
   1: "padding-top-one",
   2: "padding-top-two",
@@ -132,7 +132,7 @@ export const paddingTopSelector = {
   7: "padding-top-seven",
   8: "padding-top-eight",
 };
-export const paddingBottomSelector = {
+export const pBottomSelector = {
   0: "padding-bottom-zero",
   1: "padding-bottom-one",
   2: "padding-bottom-two",
@@ -143,7 +143,7 @@ export const paddingBottomSelector = {
   7: "padding-bottom-seven",
   8: "padding-bottom-eight",
 };
-export const paddingLeftSelector = {
+export const pLeftSelector = {
   0: "padding-left-zero",
   1: "padding-left-one",
   2: "padding-left-two",
@@ -154,7 +154,7 @@ export const paddingLeftSelector = {
   7: "padding-left-seven",
   8: "padding-left-eight",
 };
-export const paddingRightSelector = {
+export const pRightSelector = {
   0: "padding-right-zero",
   1: "padding-right-one",
   2: "padding-right-two",
@@ -183,35 +183,35 @@ type RowProps = Readonly<{
   row: true;
 }>;
 
-type SpacingProps = Readonly<{
-  margin?: keyof typeof marginSelector;
-  marginX?: keyof typeof marginXSelector;
-  marginY?: keyof typeof marginYSelector;
-  marginTop?: keyof typeof marginTopSelector;
-  marginBottom?: keyof typeof marginBottomSelector;
-  marginRight?: keyof typeof marginRightSelector;
-  marginLeft?: keyof typeof marginLeftSelector;
-  padding?: keyof typeof paddingSelector;
-  paddingX?: keyof typeof paddingXSelector;
-  paddingY?: keyof typeof paddingYSelector;
-  paddingTop?: keyof typeof paddingTopSelector;
-  paddingBottom?: keyof typeof paddingBottomSelector;
-  paddingRight?: keyof typeof paddingRightSelector;
-  paddingLeft?: keyof typeof paddingLeftSelector;
+export type SpacingProps = Readonly<{
+  margin?: keyof typeof mSelector;
+  marginX?: keyof typeof mXSelector;
+  marginY?: keyof typeof mYSelector;
+  marginTop?: keyof typeof mTopSelector;
+  marginBottom?: keyof typeof mBottomSelector;
+  marginRight?: keyof typeof mRightSelector;
+  marginLeft?: keyof typeof mLeftSelector;
+  padding?: keyof typeof pSelector;
+  paddingX?: keyof typeof pXSelector;
+  paddingY?: keyof typeof pYSelector;
+  paddingTop?: keyof typeof pTopSelector;
+  paddingBottom?: keyof typeof pBottomSelector;
+  paddingRight?: keyof typeof pRightSelector;
+  paddingLeft?: keyof typeof pLeftSelector;
 }>;
 
-type FlexProps = SpacingProps &
-  HasChildren &
+type FlexProps = HasChildren &
   HasClasses &
-  (RowProps | ColProps);
+  (RowProps | ColProps) &
+  SpacingProps;
 
 export default function Flex({
-  col,
-  // row, // unused, only needed for prop options
   children,
   className,
+  // row, // row is unused, but it is needed for prop options
+  col,
   // margin and padding props
-  margin, // This is the only one that is hardcoded
+  margin, // This is the only one that is defaulted
   marginX,
   marginY,
   marginTop,
@@ -228,89 +228,69 @@ export default function Flex({
 }: FlexProps) {
   const direction = col ? FlexDirection.Col : FlexDirection.Row;
 
-  const marginValue = margin ? marginSelector[margin] : "skip";
-  const marginXValue = marginX ? marginXSelector[marginX] : "skip";
-  const marginYValue = marginY ? marginYSelector[marginY] : "skip";
-  const marginTopValue = marginTop ? marginTopSelector[marginTop] : "skip";
-  const marginBottomValue = marginBottom
-    ? marginBottomSelector[marginBottom]
-    : "skip";
-  const marginRightValue = marginRight
-    ? marginRightSelector[marginRight]
-    : "skip";
-  const marginLeftValue = marginLeft ? marginLeftSelector[marginLeft] : "skip";
-  const paddingValue = padding ? paddingSelector[padding] : "skip";
-  const paddingXValue = paddingX ? paddingXSelector[paddingX] : "skip";
-  const paddingYValue = paddingY ? paddingYSelector[paddingY] : "skip";
-  const paddingTopValue = paddingTop ? paddingTopSelector[paddingTop] : "skip";
-  const paddingBottomValue = paddingBottom
-    ? paddingBottomSelector[paddingBottom]
-    : "skip";
-  const paddingRightValue = paddingRight
-    ? paddingRightSelector[paddingRight]
-    : "skip";
-  const paddingLeftValue = paddingLeft
-    ? paddingLeftSelector[paddingLeft]
-    : "skip";
+  const mValue = margin ? mSelector[margin] : "-";
+  const mXValue = marginX ? mXSelector[marginX] : "-";
+  const mYValue = marginY ? mYSelector[marginY] : "-";
+  const mTopValue = marginTop ? mTopSelector[marginTop] : "-";
+  const mBottomValue = marginBottom ? mBottomSelector[marginBottom] : "-";
+  const mRightValue = marginRight ? mRightSelector[marginRight] : "-";
+  const mLeftValue = marginLeft ? mLeftSelector[marginLeft] : "-";
+  const pValue = padding ? pSelector[padding] : "-";
+  const pXValue = paddingX ? pXSelector[paddingX] : "-";
+  const pYValue = paddingY ? pYSelector[paddingY] : "-";
+  const pTopValue = paddingTop ? pTopSelector[paddingTop] : "-";
+  const pBottomValue = paddingBottom ? pBottomSelector[paddingBottom] : "-";
+  const pRightValue = paddingRight ? pRightSelector[paddingRight] : "-";
+  const pLeftValue = paddingLeft ? pLeftSelector[paddingLeft] : "-";
 
-  console.log({
-    marginValue,
-    marginXValue,
-    marginYValue,
-    marginTopValue,
-    marginBottomValue,
-    marginRightValue,
-    marginLeftValue,
-    paddingValue,
-    paddingXValue,
-    paddingYValue,
-    paddingTopValue,
-    paddingBottomValue,
-    paddingRightValue,
-    paddingLeftValue,
-  });
-
-  // if all are skip, then actually choose margin (normal) to be 1
+  // if all are -, then actually choose margin (normal) to be 2
 
   const allSpacingProps = [
-    marginValue,
-    marginXValue,
-    marginYValue,
-    marginTopValue,
-    marginBottomValue,
-    marginRightValue,
-    marginLeftValue,
-    paddingValue,
-    paddingXValue,
-    paddingYValue,
-    paddingTopValue,
-    paddingBottomValue,
-    paddingRightValue,
-    paddingLeftValue,
+    mValue,
+    mXValue,
+    mYValue,
+    mTopValue,
+    mBottomValue,
+    mRightValue,
+    mLeftValue,
+    pValue,
+    pXValue,
+    pYValue,
+    pTopValue,
+    pBottomValue,
+    pRightValue,
+    pLeftValue,
   ];
 
   const defaultToMargin1 =
-    allSpacingProps.filter((sp) => sp !== "skip").length === 0;
+    allSpacingProps.filter((sp) => sp !== "-").length === 0;
+
+  const debugBorders = false;
 
   return (
     <div
       className={clsx(
         flexStyles.flex,
         flexStyles[direction],
-        globalStyles[defaultToMargin1 ? marginSelector[1] : marginValue],
-        marginXValue !== "skip" && globalStyles[marginXValue],
-        marginYValue !== "skip" && globalStyles[marginYValue],
-        marginTopValue !== "skip" && globalStyles[marginTopValue],
-        marginBottomValue !== "skip" && globalStyles[marginBottomValue],
-        marginRightValue !== "skip" && globalStyles[marginRightValue],
-        marginLeftValue !== "skip" && globalStyles[marginLeftValue],
-        paddingValue !== "skip" && globalStyles[paddingValue],
-        paddingXValue !== "skip" && globalStyles[paddingXValue],
-        paddingYValue !== "skip" && globalStyles[paddingYValue],
-        paddingTopValue !== "skip" && globalStyles[paddingTopValue],
-        paddingBottomValue !== "skip" && globalStyles[paddingBottomValue],
-        paddingRightValue !== "skip" && globalStyles[paddingRightValue],
-        paddingLeftValue !== "skip" && globalStyles[paddingLeftValue],
+        globalStyles[defaultToMargin1 ? mSelector[2] : mValue],
+        mXValue !== "-" && globalStyles[mXValue],
+        mYValue !== "-" && globalStyles[mYValue],
+        mTopValue !== "-" && globalStyles[mTopValue],
+        mBottomValue !== "-" && globalStyles[mBottomValue],
+        mRightValue !== "-" && globalStyles[mRightValue],
+        mLeftValue !== "-" && globalStyles[mLeftValue],
+        pValue !== "-" && globalStyles[pValue],
+        pXValue !== "-" && globalStyles[pXValue],
+        pYValue !== "-" && globalStyles[pYValue],
+        pTopValue !== "-" && globalStyles[pTopValue],
+        pBottomValue !== "-" && globalStyles[pBottomValue],
+        pRightValue !== "-" && globalStyles[pRightValue],
+        pLeftValue !== "-" && globalStyles[pLeftValue],
+
+        debugBorders && globalStyles.border,
+        debugBorders && globalStyles.borderRounded,
+        debugBorders && globalStyles["border-tone-alert"],
+
         className
       )}
     >

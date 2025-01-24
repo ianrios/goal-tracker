@@ -1,11 +1,17 @@
+import Header from "@/components/molecules/header/header";
 import Drawer from "@/components/organisms/drawer/drawer";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 
-export default function page() {
+export default function Page() {
   // TODO: make the drawer accept any kind of js not just goals
   return (
     <PageLayout>
+      <Header
+        size={3}
+        text="the Drawer has marginTop and marginBottom spacing props ONLY - they both default to 2 - override requires passing in margin 0 or something weird"
+      />
       <Drawer
+        marginTop={0}
         title={"example drawer"}
         goals={[
           {

@@ -19,21 +19,15 @@ export default function Page() {
         )}
       >
         {Object.keys(IconMap).map((icon) => (
-          <Flex
-            col
+          <IconButton
             key={icon}
-            margin={2}
-            className={clsx(
-              globalStyles["border-tone-success"],
-              globalStyles.border,
-              globalStyles.borderRounded
-            )}
-          >
-            <IconButton
-              onClick={() => console.log(`clicked on ${icon}`)}
-              name={icon as IconName}
-            />
-          </Flex>
+            marginY={2}
+            marginRight={0}
+            marginLeft={2}
+            padding={2}
+            onClick={() => console.log(`clicked on ${icon}`)}
+            name={icon as IconName}
+          />
         ))}
       </Flex>
     </PageLayout>

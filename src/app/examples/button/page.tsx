@@ -2,7 +2,7 @@
 import Flex from "@/components/atoms/flex/flex";
 import clsx from "clsx";
 import globalStyles from "@/app/ui/global.module.css";
-import Button from "@/components/atoms/button/button";
+import Button from "@/components/molecules/button/button";
 import { useRouter } from "next/navigation";
 import { navigateTo } from "@/app/page";
 
@@ -29,8 +29,19 @@ export default function Page() {
           globalStyles.borderRounded
         )}
       >
-        <Button onClick={clickAction} text="click me to trigger an action!" />
-        <Button onClick={routeAction} text="click me to navigate to a route!" />
+        <Button
+          margin={2}
+          padding={2}
+          onClick={clickAction}
+          text="click me to trigger an action!"
+        />
+        <Button
+          marginY={2}
+          marginRight={2}
+          padding={2}
+          onClick={routeAction}
+          text="click me to navigate to a route!"
+        />
       </Flex>
     </PageLayout>
   );

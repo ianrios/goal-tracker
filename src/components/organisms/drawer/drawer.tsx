@@ -1,5 +1,5 @@
 "use client";
-import Flex from "@/components/atoms/flex/flex";
+import Flex, { SpacingProps } from "@/components/atoms/flex/flex";
 import globalStyles from "@/app/ui/global.module.css";
 import clsx from "clsx";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { Goal } from "@/app/lib/definitions";
 import Card from "@/components/molecules/card/card";
 import IconButton from "@/components/molecules/icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
+import Header from "@/components/molecules/header/header";
+import flexStyles from "../../atoms/flex/flex.module.css";
 
 // TODO: move to helper util
 const chunkArray = (array: Goal[], chunkSize: number) => {
@@ -22,14 +24,20 @@ type DrawerProps = Readonly<{
   goals: Goal[];
 }>;
 
-export default function Drawer({ title, goals }: DrawerProps) {
+export default function Drawer({
+  title,
+  goals,
+  marginTop,
+  marginBottom,
+}: DrawerProps & Pick<SpacingProps, "marginTop" | "marginBottom">) {
   const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
   return (
     <Flex
       col
-      marginTop={2}
+      marginTop={marginTop ?? 2}
       marginX={2}
       paddingBottom={2}
+      marginBottom={marginBottom ?? 2}
       className={clsx(
         globalStyles["border-tone-alert"],
         globalStyles.border,
@@ -43,17 +51,20 @@ export default function Drawer({ title, goals }: DrawerProps) {
         className={clsx(
           globalStyles["border-tone-info"],
           globalStyles.border,
-          globalStyles.borderRounded
+          globalStyles.borderRounded,
+          flexStyles["align-items-center"]
         )}
       >
         <IconButton
+          marginLeft={2}
+          padding={2}
           onClick={() => setDrawerExpanded(!drawerExpanded)}
           name={drawerExpanded ? IconName.DownArrow : IconName.UpArrow}
         />
-        <Card header={title} />
+        <Header text={title} size={2} />
       </Flex>
       {drawerExpanded &&
-        chunkArray(goals, 3).map((goalChunk, chunkIndex) => (
+        chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
           <Flex
             key={chunkIndex}
             row

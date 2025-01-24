@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import globalStyles from "@/app/ui/global.module.css";
 import Flex from "@/components/atoms/flex/flex";
-import Button from "@/components/atoms/button/button";
+import Button from "@/components/molecules/button/button";
 import { navigateTo } from "@/app/page";
 import { useRouter } from "next/navigation";
 
@@ -22,7 +22,6 @@ export default function Navbar({ navLinks }: NavbarProps) {
       row
       marginTop={2}
       marginX={2}
-      padding={1}
       className={clsx(
         globalStyles["border-tone-alert"],
         globalStyles.border,
@@ -33,6 +32,9 @@ export default function Navbar({ navLinks }: NavbarProps) {
         <Button
           key={`link-${name}-${route}`}
           text={name}
+          marginY={2}
+          marginLeft={2}
+          padding={2}
           onClick={() => navigateTo(router, route)}
         />
       ))}

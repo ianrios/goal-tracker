@@ -10,3 +10,23 @@
 .col {
   flex-direction: column;
 }
+
+/* Alignment classes - need to refine */
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+.justify-items-center {
+  justify-items: center;
+}
+.justify-self-center {
+  justify-self: center;
+}

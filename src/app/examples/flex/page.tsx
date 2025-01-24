@@ -1,25 +1,25 @@
 import Flex, {
-  marginBottomSelector,
-  marginLeftSelector,
-  marginRightSelector,
-  marginSelector,
-  marginTopSelector,
-  marginXSelector,
-  marginYSelector,
-  paddingBottomSelector,
-  paddingLeftSelector,
-  paddingRightSelector,
-  paddingSelector,
-  paddingTopSelector,
-  paddingXSelector,
-  paddingYSelector,
+  mBottomSelector,
+  mLeftSelector,
+  mRightSelector,
+  mSelector,
+  mTopSelector,
+  mXSelector,
+  mYSelector,
+  pBottomSelector,
+  pLeftSelector,
+  pRightSelector,
+  pSelector,
+  pTopSelector,
+  pXSelector,
+  pYSelector,
 } from "@/components/atoms/flex/flex";
 import clsx from "clsx";
 import globalStyles from "@/app/ui/global.module.css";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
-  const simpleArray = Object.keys(marginSelector);
+  const simpleArray = Object.keys(mSelector);
 
   return (
     <PageLayout>
@@ -50,7 +50,7 @@ export default function Page() {
                 globalStyles.border,
                 globalStyles.borderRounded
               )}
-              margin={val as unknown as keyof typeof marginSelector}
+              margin={val as unknown as keyof typeof mSelector}
               padding={0}
             >
               margin {val}
@@ -76,7 +76,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              padding={val as unknown as keyof typeof paddingSelector}
+              padding={val as unknown as keyof typeof pSelector}
             >
               padding {val}
             </Flex>
@@ -100,8 +100,8 @@ export default function Page() {
                 globalStyles.border,
                 globalStyles.borderRounded
               )}
-              margin={val as unknown as keyof typeof marginSelector}
-              padding={val as unknown as keyof typeof paddingSelector}
+              margin={val as unknown as keyof typeof mSelector}
+              padding={val as unknown as keyof typeof pSelector}
             >
               margin {val}
               padding {val}
@@ -136,7 +136,7 @@ export default function Page() {
                 globalStyles.border,
                 globalStyles.borderRounded
               )}
-              marginX={val as unknown as keyof typeof marginXSelector}
+              marginX={val as unknown as keyof typeof mXSelector}
               padding={0}
             >
               margin X {val}
@@ -161,7 +161,7 @@ export default function Page() {
                 globalStyles.border,
                 globalStyles.borderRounded
               )}
-              marginY={val as unknown as keyof typeof marginYSelector}
+              marginY={val as unknown as keyof typeof mYSelector}
               padding={0}
             >
               margin Y {val}
@@ -187,7 +187,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingY={val as unknown as keyof typeof paddingYSelector}
+              paddingY={val as unknown as keyof typeof pYSelector}
             >
               padding Y {val}
             </Flex>
@@ -212,7 +212,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingX={val as unknown as keyof typeof paddingXSelector}
+              paddingX={val as unknown as keyof typeof pXSelector}
             >
               padding X {val}
             </Flex>
@@ -247,7 +247,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingLeft={val as unknown as keyof typeof paddingLeftSelector}
+              paddingLeft={val as unknown as keyof typeof pLeftSelector}
             >
               paddingLeft {val}
             </Flex>
@@ -272,7 +272,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingRight={val as unknown as keyof typeof paddingRightSelector}
+              paddingRight={val as unknown as keyof typeof pRightSelector}
             >
               paddingRight {val}
             </Flex>
@@ -297,7 +297,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingTop={val as unknown as keyof typeof paddingTopSelector}
+              paddingTop={val as unknown as keyof typeof pTopSelector}
             >
               paddingTop {val}
             </Flex>
@@ -322,9 +322,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               margin={0}
-              paddingBottom={
-                val as unknown as keyof typeof paddingBottomSelector
-              }
+              paddingBottom={val as unknown as keyof typeof pBottomSelector}
             >
               paddingBottom {val}
             </Flex>
@@ -359,7 +357,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               padding={0}
-              marginLeft={val as unknown as keyof typeof marginLeftSelector}
+              marginLeft={val as unknown as keyof typeof mLeftSelector}
             >
               marginLeft {val}
             </Flex>
@@ -384,7 +382,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               padding={0}
-              marginRight={val as unknown as keyof typeof marginRightSelector}
+              marginRight={val as unknown as keyof typeof mRightSelector}
             >
               marginRight {val}
             </Flex>
@@ -409,7 +407,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               padding={0}
-              marginTop={val as unknown as keyof typeof marginTopSelector}
+              marginTop={val as unknown as keyof typeof mTopSelector}
             >
               marginTop {val}
             </Flex>
@@ -434,7 +432,7 @@ export default function Page() {
                 globalStyles.borderRounded
               )}
               padding={0}
-              marginBottom={val as unknown as keyof typeof marginBottomSelector}
+              marginBottom={val as unknown as keyof typeof mBottomSelector}
             >
               marginBottom {val}
             </Flex>

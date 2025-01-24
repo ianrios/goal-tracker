@@ -1,3 +1,20 @@
+export enum Buckets {
+  Life = "life",
+  Year = "year",
+  Quarter = "quarter",
+  Month = "month",
+  Week = "week",
+  Day = "day",
+}
+export type Bucket =
+  | Buckets.Life
+  | Buckets.Life
+  | Buckets.Year
+  | Buckets.Quarter
+  | Buckets.Month
+  | Buckets.Week
+  | Buckets.Day;
+
 export type Goal = {
   id: string;
   createdAt: Date;
@@ -9,7 +26,7 @@ export type Goal = {
   info: string;
   deadline: Date;
   // TODO: figure out how to differentiate the types of goals (and life goals do not need a deadline)
-  bucket: "life" | "year" | "quarter" | "month" | "week" | "day";
+  bucket: Bucket;
 };
 
 export type SubGoal = {

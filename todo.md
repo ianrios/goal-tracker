@@ -1,17 +1,17 @@
 things to do
 
-- [ ] create a database that i can run locally
 - [x] create this list of todos for the app
 - [x] i probably dont need two branches but idk
 - [x] create the wip branch
 - [x] update the base branch so that i get github tracking metrics
 - [x] create the mvp
 - [x] refine the mvp
+- [x] gap prop for flex
+- [ ] create a database that i can run locally
 - [ ] use the sub goals array on the app to group the goals
 - [ ] button hover, active, and click effects
 - [ ] form component
 - [ ] input component
-- [x] gap prop for flex
 - [ ] modal / dialog component
 - [ ] expand button on goal
 - [ ] different border color or texture on goal vs task (can tasks have less features?)

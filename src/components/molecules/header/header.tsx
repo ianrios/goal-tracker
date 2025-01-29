@@ -26,6 +26,7 @@ export default function Header(props: HeaderProps) {
         return <h6 className={clsx(headerStyles.h6)}>{text}</h6>;
       case 2:
       default:
+        // Header is defaulted to h2
         return <h2 className={clsx(headerStyles.h2)}>{text}</h2>;
     }
   };

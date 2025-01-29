@@ -43,6 +43,6 @@ export type BaseIconProps = Readonly<{
 
 export default function Icon(props: BaseIconProps) {
   const { name } = props;
-  const IconComponent = IconMap[name] || VscBracketError; // Default to error icon if name is invalid
+  const IconComponent = IconMap[name] || VscBracketError; // IconComponent is defaulted to error icon if name is invalid
   return <IconComponent />;
 }

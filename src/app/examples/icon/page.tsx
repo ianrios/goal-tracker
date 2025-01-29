@@ -12,7 +12,8 @@ export default function Page() {
       <Flex
         row
         border
-        mT={2}
+        gap={2}
+        p={2}
         className={clsx(flexStyles["align-items-center"])}
       >
         <Header size={4} text="Icons as is" />
@@ -20,10 +21,10 @@ export default function Page() {
           <Icon key={icon} name={icon as IconName} />
         ))}
       </Flex>
-      <Flex row border mT={2}>
+      <Flex row border gap={2} p={2}>
         <Header size={4} text="IconFlex components" />
         {Object.keys(IconMap).map((icon) => (
-          <IconFlex border m={2} p={1} key={icon} name={icon as IconName} />
+          <IconFlex key={icon} border p={1} name={icon as IconName} />
         ))}
       </Flex>
     </PageLayout>

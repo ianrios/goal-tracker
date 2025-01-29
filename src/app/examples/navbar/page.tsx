@@ -21,9 +21,7 @@ export default function Page() {
     <PageLayout>
       <Header
         size={3}
-        mT={3}
-        mB={2}
-        text="the navbar does not have m(argin) or border by default"
+        text="the navbar does not have defaulted m(argin) or border"
       />
       <Navbar navLinks={exampleNavLinks} border />
     </PageLayout>

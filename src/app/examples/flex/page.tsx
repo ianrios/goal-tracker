@@ -21,9 +21,9 @@ export default function Page() {
 
   return (
     <PageLayout>
-      <Flex row border mX={0} mY={2}>
+      <Flex row border gap={2} p={2}>
         {/* most used */}
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
@@ -36,7 +36,7 @@ export default function Page() {
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
@@ -49,7 +49,7 @@ export default function Page() {
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
@@ -63,167 +63,167 @@ export default function Page() {
           ))}
         </Flex>
       </Flex>
-      <Flex row border m={0}>
+      <Flex row border gap={2} p={2}>
         {/* just X and Y used */}
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
-              mX={val as unknown as keyof typeof mXSelector}
+              mx={val as unknown as keyof typeof mXSelector}
               p={0}
             >
-              mX {val}
+              mx {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
-              mY={val as unknown as keyof typeof mYSelector}
+              my={val as unknown as keyof typeof mYSelector}
               p={0}
             >
-              mY {val}
+              my {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pY={val as unknown as keyof typeof pYSelector}
+              py={val as unknown as keyof typeof pYSelector}
             >
-              pY {val}
+              py {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mR={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pX={val as unknown as keyof typeof pXSelector}
+              px={val as unknown as keyof typeof pXSelector}
             >
-              pX {val}
+              px {val}
             </Flex>
           ))}
         </Flex>
       </Flex>
-      <Flex row border mX={0} mY={2}>
+      <Flex row border gap={2} p={2}>
         {/* just the p specific ones */}
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pL={val as unknown as keyof typeof pLSelector}
+              pl={val as unknown as keyof typeof pLSelector}
             >
-              pL {val}
+              pl {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pR={val as unknown as keyof typeof pRSelector}
+              pr={val as unknown as keyof typeof pRSelector}
             >
-              pR {val}
+              pr {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pT={val as unknown as keyof typeof pTSelector}
+              pt={val as unknown as keyof typeof pTSelector}
             >
-              pT {val}
+              pt {val}
             </Flex>
           ))}
         </Flex>
-        <Flex col border p={2} mY={2} mR={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               m={0}
-              pB={val as unknown as keyof typeof pBSelector}
+              pb={val as unknown as keyof typeof pBSelector}
             >
-              pB {val}
+              pb {val}
             </Flex>
           ))}
         </Flex>
       </Flex>
-      <Flex row border mX={0} mB={2}>
+      <Flex row border gap={2} p={2}>
         {/* just the m specific ones */}
-        <Flex col border p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               p={0}
-              mL={val as unknown as keyof typeof mLSelector}
+              ml={val as unknown as keyof typeof mLSelector}
             >
-              mL {val}
+              ml {val}
             </Flex>
           ))}
         </Flex>
-        <Flex border col p={2} mY={2} mX={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               p={0}
-              mR={val as unknown as keyof typeof mRSelector}
+              mr={val as unknown as keyof typeof mRSelector}
             >
-              mR {val}
+              mr {val}
             </Flex>
           ))}
         </Flex>
-        <Flex border col p={2} mY={2} mX={2}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               p={0}
-              mT={val as unknown as keyof typeof mTSelector}
+              mt={val as unknown as keyof typeof mTSelector}
             >
-              mT {val}
+              mt {val}
             </Flex>
           ))}
         </Flex>
-        <Flex border col p={2} mY={2} mR={0}>
+        <Flex col border>
           {simpleArray.map((val) => (
             <Flex
               key={val}
               row
               border
               p={0}
-              mB={val as unknown as keyof typeof mBSelector}
+              mb={val as unknown as keyof typeof mBSelector}
             >
-              mB {val}
+              mb {val}
             </Flex>
           ))}
         </Flex>

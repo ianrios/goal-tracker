@@ -6,7 +6,8 @@ import Icon, { BaseIconProps } from "@/components/atoms/icon/icon";
 type IconButtonProps = BaseIconProps & Omit<ButtonProps, "text"> & SpacingProps;
 
 export default function IconButton(props: IconButtonProps) {
-  const { name, ...restProps } = props;
+  // IconButton p is defaulted to 2
+  const { name, p = 2, ...restProps } = props;
 
-  return <Button {...restProps} text={<Icon name={name} />} />;
+  return <Button p={p} {...restProps} text={<Icon name={name} />} />;
 }

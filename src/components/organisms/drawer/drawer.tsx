@@ -30,28 +30,16 @@ export default function Drawer(props: DrawerProps) {
   const { title, tone, goals, ...restSpacingProps } = props;
   const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
   return (
-    <Flex
-      col
-      border
-      tone={tone}
-      // TODO: do this override better
-      mT={restSpacingProps.mT ?? 2}
-      mX={restSpacingProps.mX ?? 2}
-      pB={restSpacingProps.pB ?? 2}
-      mB={restSpacingProps.mB ?? 2}
-      {...restSpacingProps}
-    >
+    <Flex col border tone={tone} gap={2} p={2} {...restSpacingProps}>
       <Flex
         row
         border
         tone={tone}
-        mT={2}
-        mX={2}
+        gap={2}
+        p={2}
         className={clsx(flexStyles["align-items-center"])}
       >
         <IconButton
-          mL={2}
-          p={2}
           onClick={() => setDrawerExpanded(!drawerExpanded)}
           name={drawerExpanded ? IconName.DownArrow : IconName.UpArrow}
         />
@@ -59,15 +47,9 @@ export default function Drawer(props: DrawerProps) {
       </Flex>
       {drawerExpanded &&
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
-          <Flex key={chunkIndex} row border tone={tone} mT={2} mX={2}>
+          <Flex key={chunkIndex} row border tone={tone} gap={2} p={2}>
             {goalChunk.map((goal) => (
-              <Card
-                key={goal.id}
-                header={goal.title}
-                body={goal.info}
-                mL={2}
-                mY={2}
-              />
+              <Card key={goal.id} header={goal.title} body={goal.info} />
             ))}
           </Flex>
         ))}

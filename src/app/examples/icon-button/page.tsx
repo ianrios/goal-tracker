@@ -7,14 +7,10 @@ import IconButton from "@/components/molecules/icon-button/icon-button";
 export default function Page() {
   return (
     <PageLayout>
-      <Flex row mT={2} border>
+      <Flex row border gap={2} p={2}>
         {Object.keys(IconMap).map((icon) => (
           <IconButton
             key={icon}
-            mY={2}
-            mR={0}
-            mL={2}
-            p={2}
             onClick={() => console.log(`clicked on ${icon}`)}
             name={icon as IconName}
           />

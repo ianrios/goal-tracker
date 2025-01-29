@@ -32,6 +32,8 @@ export default function Button(props: ButtonProps) {
     tone = "neutral",
     onClick,
     className,
+    // button gets padding defaulted to 2
+    p = 2,
     ...restSpacingProps
   } = props;
   const borderTone = `border-tone-${tone}`;
@@ -43,6 +45,7 @@ export default function Button(props: ButtonProps) {
       <Flex
         row
         border
+        p={p}
         {...restSpacingProps}
         className={clsx(
           flexStyles["align-items-center"],

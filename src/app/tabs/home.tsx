@@ -48,20 +48,16 @@ export default function Home() {
   ];
 
   return (
-    <Flex col border mT={2} pB={2}>
-      <Flex row border>
+    <Flex col border gap={2} p={2}>
+      <Flex row border gap={2} p={2}>
         done filter
         <IconButton
           onClick={() => setFilterDone(!filterDone)}
-          p={2}
-          m={2}
           name={filterDone ? IconName.Filter : IconName.FilterFill}
         />
         past due filter
         <IconButton
           onClick={() => setFilterPastDue(!filterPastDue)}
-          p={2}
-          m={2}
           name={filterPastDue ? IconName.Filter : IconName.FilterFill}
         />
       </Flex>
@@ -72,7 +68,6 @@ export default function Home() {
               key={title}
               title={title}
               goals={goals}
-              mB={0}
               tone={title === "Past Due Goals" ? "alert" : "neutral"}
             />
           )

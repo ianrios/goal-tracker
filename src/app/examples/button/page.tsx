@@ -18,21 +18,9 @@ export default function Page() {
   };
   return (
     <PageLayout>
-      <Flex row m={0}>
-        <Button
-          mL={0}
-          m={2}
-          p={2}
-          onClick={clickAction}
-          text="click me to trigger an action!"
-        />
-        <Button
-          mY={2}
-          mR={2}
-          p={2}
-          onClick={routeAction}
-          text="click me to navigate to a route!"
-        />
+      <Flex row gap={2}>
+        <Button onClick={clickAction} text="click me to trigger an action!" />
+        <Button onClick={routeAction} text="click me to navigate to a route!" />
       </Flex>
     </PageLayout>
   );

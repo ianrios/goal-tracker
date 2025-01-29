@@ -4,7 +4,7 @@ import PageLayout from "@/components/organisms/page-layout/page-layout";
 export default function Page() {
   return (
     <PageLayout>
-      <Header text={"default header"} />
+      <Header text={"header is defaulted to 2"} />
       <Header size={1} text={"1"} />
       <Header size={2} text={"2"} />
       <Header size={3} text={"3"} />

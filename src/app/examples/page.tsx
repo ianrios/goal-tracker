@@ -22,22 +22,19 @@ export default function Page() {
   return (
     <PageLayout>
       <Header
-        mX={0}
-        mY={2}
         size={3}
         text={`here is a list of all the helper files so that I can render out my design
-      tokens with all the props applied. the only one that does not have its own
-      route is page-layout, which is still used on all pages`}
+      tokens with all the props applied. `}
       />
-
-      {exampleRoutes.map((route, index) => (
+      <Header
+        size={4}
+        text={`The only one that does not have its own
+      route is page-layout, which is still used on all pages and has defaulted gap={2}`}
+      />
+      {exampleRoutes.map((route) => (
         <Button
           key={route}
           text={route}
-          mT={index == 0 ? 0 : 2}
-          mX={0}
-          p={2}
-          mB={index + 1 === exampleRoutes.length ? 2 : 0}
           onClick={() => navigateTo(router, `/examples/${route}`)}
         />
       ))}

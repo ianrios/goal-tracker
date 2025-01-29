@@ -39,6 +39,35 @@ body {
   border-color: green;
 }
 
+/* Gap styles */
+.gap-zero {
+  gap: 0rem;
+}
+.gap-one {
+  gap: 0.25rem;
+}
+.gap-two {
+  gap: 0.5rem;
+}
+.gap-three {
+  gap: 0.75em;
+}
+.gap-four {
+  gap: 1rem;
+}
+.gap-five {
+  gap: 1.25rem;
+}
+.gap-six {
+  gap: 1.5rem;
+}
+.gap-seven {
+  gap: 1.75rem;
+}
+.gap-eight {
+  gap: 2rem;
+}
+
 /* Padding styles */
 .padding-zero {
   padding: 0rem;

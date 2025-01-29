@@ -8,16 +8,10 @@ export default function Page() {
   return (
     <PageLayout>
       <Header
-        mX={0}
-        mY={2}
         size={3}
-        text="the Drawer has mT, mX, pB, & mB props set to 2 but can be overrided"
+        text="the Drawer has mt, mx, pb, & mb props set to 2 but can be overrided"
       />
       <Drawer
-        mT={0}
-        mX={0}
-        pB={2}
-        mB={2}
         title={"example drawer"}
         goals={[
           {

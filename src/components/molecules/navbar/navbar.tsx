@@ -21,14 +21,11 @@ export default function Navbar(props: NavbarProps) {
   const router = useRouter();
 
   return (
-    <Flex row {...restSpacingProps} m={0} className={clsx("navbar")}>
+    <Flex row gap={2} p={2} {...restSpacingProps} className={clsx("navbar")}>
       {navLinks.map(({ name, route }) => (
         <Button
           key={`link-${name}-${route}`}
           text={name}
-          mY={2}
-          mL={2}
-          p={2}
           onClick={() => navigateTo(router, route)}
         />
       ))}

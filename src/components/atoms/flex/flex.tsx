@@ -19,6 +19,19 @@ export const ToneSelector = {
   success: "success",
 };
 
+// gap prop options
+export const gapSelector = {
+  0: "gap-zero",
+  1: "gap-one",
+  2: "gap-two",
+  3: "gap-three",
+  4: "gap-four",
+  5: "gap-five",
+  6: "gap-six",
+  7: "gap-seven",
+  8: "gap-eight",
+};
+
 // TODO: Move these helpers somewhere else
 // margin helpers
 export const mSelector = {
@@ -206,19 +219,23 @@ type HasTone = Readonly<{
 // TODO: use enum for this
 export type SpacingProps = Readonly<{
   m?: keyof typeof mSelector;
-  mX?: keyof typeof mXSelector;
-  mY?: keyof typeof mYSelector;
-  mT?: keyof typeof mTSelector;
-  mB?: keyof typeof mBSelector;
-  mR?: keyof typeof mRSelector;
-  mL?: keyof typeof mLSelector;
+  mx?: keyof typeof mXSelector;
+  my?: keyof typeof mYSelector;
+  mt?: keyof typeof mTSelector;
+  mb?: keyof typeof mBSelector;
+  mr?: keyof typeof mRSelector;
+  ml?: keyof typeof mLSelector;
   p?: keyof typeof pSelector;
-  pX?: keyof typeof pXSelector;
-  pY?: keyof typeof pYSelector;
-  pT?: keyof typeof pTSelector;
-  pB?: keyof typeof pBSelector;
-  pR?: keyof typeof pRSelector;
-  pL?: keyof typeof pLSelector;
+  px?: keyof typeof pXSelector;
+  py?: keyof typeof pYSelector;
+  pt?: keyof typeof pTSelector;
+  pb?: keyof typeof pBSelector;
+  pr?: keyof typeof pRSelector;
+  pl?: keyof typeof pLSelector;
+}>;
+
+export type HasGap = Readonly<{
+  gap?: keyof typeof gapSelector;
 }>;
 
 type FlexProps = HasChildren &
@@ -226,6 +243,7 @@ type FlexProps = HasChildren &
   HasTone &
   HasClasses &
   (RowProps | ColProps) &
+  HasGap &
   SpacingProps;
 
 export default function Flex({
@@ -233,61 +251,43 @@ export default function Flex({
   className,
   // row, // row is unused, but it is needed for prop options
   col,
-  border = false, // border is default false, which means no border
-  tone = "neutral", // tone defaults to neutral
-  // margin and padding props
-  m, // This is the only one that is defaulted
-  mX,
-  mY,
-  mT,
-  mB,
-  mR,
-  mL,
+  border = false, // border is defaulted to false, which means no border
+  tone = "neutral", // tone is defaulted to neutral
+  // margin and padding props - none are defaulted
+  m,
+  mx,
+  my,
+  mt,
+  mb,
+  mr,
+  ml,
   p,
-  pX,
-  pY,
-  pT,
-  pB,
-  pR,
-  pL,
+  px,
+  py,
+  pt,
+  pb,
+  pr,
+  pl,
+  // gap props - not defaulted
+  gap,
 }: FlexProps) {
   const direction = col ? FlexDirection.Col : FlexDirection.Row;
 
   const mValue = isUndefined(m) ? "-" : mSelector[m];
-  const mXValue = isUndefined(mX) ? "-" : mXSelector[mX];
-  const mYValue = isUndefined(mY) ? "-" : mYSelector[mY];
-  const mTValue = isUndefined(mT) ? "-" : mTSelector[mT];
-  const mBValue = isUndefined(mB) ? "-" : mBSelector[mB];
-  const mRValue = isUndefined(mR) ? "-" : mRSelector[mR];
-  const mLValue = isUndefined(mL) ? "-" : mLSelector[mL];
+  const mXValue = isUndefined(mx) ? "-" : mXSelector[mx];
+  const mYValue = isUndefined(my) ? "-" : mYSelector[my];
+  const mTValue = isUndefined(mt) ? "-" : mTSelector[mt];
+  const mBValue = isUndefined(mb) ? "-" : mBSelector[mb];
+  const mRValue = isUndefined(mr) ? "-" : mRSelector[mr];
+  const mLValue = isUndefined(ml) ? "-" : mLSelector[ml];
   const pValue = isUndefined(p) ? "-" : pSelector[p];
-  const pXValue = isUndefined(pX) ? "-" : pXSelector[pX];
-  const pYValue = isUndefined(pY) ? "-" : pYSelector[pY];
-  const pTValue = isUndefined(pT) ? "-" : pTSelector[pT];
-  const pBValue = isUndefined(pB) ? "-" : pBSelector[pB];
-  const pRValue = isUndefined(pR) ? "-" : pRSelector[pR];
-  const pLValue = isUndefined(pL) ? "-" : pLSelector[pL];
+  const pXValue = isUndefined(px) ? "-" : pXSelector[px];
+  const pYValue = isUndefined(py) ? "-" : pYSelector[py];
+  const pTValue = isUndefined(pt) ? "-" : pTSelector[pt];
+  const pBValue = isUndefined(pb) ? "-" : pBSelector[pb];
+  const pRValue = isUndefined(pr) ? "-" : pRSelector[pr];
+  const pLValue = isUndefined(pl) ? "-" : pLSelector[pl];
   // if all are -, then actually choose margin (normal) to be 2
-
-  const allSpacingProps = [
-    mValue,
-    mXValue,
-    mYValue,
-    mTValue,
-    mBValue,
-    mRValue,
-    mLValue,
-    pValue,
-    pXValue,
-    pYValue,
-    pTValue,
-    pBValue,
-    pRValue,
-    pLValue,
-  ];
-
-  const defaultToMargin1 =
-    allSpacingProps.filter((sp) => sp !== "-").length === 0;
 
   // const debugBorders = true;
   const debugBorders = false;
@@ -304,7 +304,8 @@ export default function Flex({
       className={clsx(
         flexStyles.flex,
         flexStyles[direction],
-        globalStyles[defaultToMargin1 ? mSelector[2] : mValue],
+        // margin and padding
+        mValue !== "-" && globalStyles[mValue],
         mXValue !== "-" && globalStyles[mXValue],
         mYValue !== "-" && globalStyles[mYValue],
         mTValue !== "-" && globalStyles[mTValue],
@@ -318,6 +319,8 @@ export default function Flex({
         pBValue !== "-" && globalStyles[pBValue],
         pRValue !== "-" && globalStyles[pRValue],
         pLValue !== "-" && globalStyles[pLValue],
+        // gap
+        !isUndefined(gap) && globalStyles[gapSelector[gap]],
 
         (border || debugBorders) && globalStyles.border,
         (border || debugBorders) && globalStyles.borderRounded,

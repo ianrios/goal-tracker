@@ -4,7 +4,7 @@ things to do
 - [x] create this list of todos for the app
 - [x] i probably dont need two branches but idk
 - [x] create the wip branch
-- [ ] update the base branch so that i get github tracking metrics
+- [x] update the base branch so that i get github tracking metrics
 - [x] create the mvp
 - [x] refine the mvp
 - [ ] use the sub goals array on the app to group the goals

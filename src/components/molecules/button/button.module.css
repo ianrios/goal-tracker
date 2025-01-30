@@ -2,5 +2,16 @@
   cursor: pointer;
   user-select: none;
 }
+/* TODO: add color tones here */
+.cursor:hover {
+  background-color: gainsboro;
+}
+/* TODO: add color tones here */
+.cursor:active {
+  background-color: darkgray;
+  /* TODO: add color tones here */
+  outline: 2px solid black;
+  outline-offset: -2px;
+}
 
 /* implement cursor hover and click effects */

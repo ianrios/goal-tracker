@@ -1,3 +1,4 @@
+"use client";
 import { Buckets } from "@/app/lib/definitions";
 import Header from "@/components/molecules/header/header";
 import Drawer from "@/components/organisms/drawer/drawer";
@@ -5,13 +6,16 @@ import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
   // TODO: make the drawer accept any kind of js not just goals
+  // or rename the drawer to a goals drawer or something
+  // does it matter?
   return (
     <PageLayout>
       <Header
         size={3}
-        text="the Drawer has mt, mx, pb, & mb props set to 2 but can be overrided"
+        text="the Drawer has mt, mx, pb, & mb props set to 2 but can be overridden"
       />
       <Drawer
+        expanded
         title={"example drawer"}
         goals={[
           {
@@ -21,8 +25,8 @@ export default function Page() {
             completedAt: null,
             archivedAt: null,
             deletedAt: null,
-            title: "Finish This App!",
-            info: "keep on chugging!",
+            header: "Finish This App!",
+            body: "keep on chugging!",
             deadline: new Date("2025-12-31T23:59:59.741Z"),
             bucket: Buckets.Year,
           },
@@ -33,8 +37,8 @@ export default function Page() {
             completedAt: null,
             archivedAt: null,
             deletedAt: null,
-            title: "update the styles",
-            info: "nice!",
+            header: "update the styles",
+            body: "nice!",
             deadline: new Date("2025-12-31T23:59:59.741Z"),
             bucket: Buckets.Year,
           },

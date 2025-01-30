@@ -30,6 +30,8 @@ export enum IconName {
   CloseSmall = "BsX",
 }
 
+// TODO: use enums better
+
 export const IconMap: Record<IconName, React.ComponentType> = {
   [IconName.Filter]: BsFilterCircle,
   [IconName.FilterFill]: BsFilterCircleFill,

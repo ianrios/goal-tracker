@@ -1,27 +1,27 @@
 "use client";
 import clsx from "clsx";
-import Flex, { HasClasses, SpacingProps } from "../../atoms/flex/flex";
+import Flex, { HasClasses, HasTone, SpacingProps } from "../../atoms/flex/flex";
 import globalStyles from "@/app/ui/global.module.css";
-import { HasTone } from "../button/button";
 import IconButton from "../icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
 import { useState } from "react";
 import Dialog from "@/components/organisms/dialog/dialog";
-
-export type ToneTypes = "info" | "neutral" | "alert" | "success";
+import { Goal } from "@/app/lib/definitions";
 
 type CardProps = Readonly<{
-  header: string;
-  body?: string;
+  header: Goal["header"];
+  body: Goal["body"];
+  goal?: Omit<Goal, "header" | "body">;
 }>;
 
 export default function Card(
   props: CardProps & HasClasses & HasTone & SpacingProps
 ) {
   const {
-    tone = "neutral",
     header,
     body,
+    goal,
+    tone = "neutral",
     className,
     // Card gets defaulted to 2
     p = 2,
@@ -43,6 +43,7 @@ export default function Card(
       className={clsx(globalStyles[borderTone], className)}
     >
       {/* TODO: figure out header border */}
+      {/* TODO: show bucket in header */}
       <Flex row>{header}</Flex>
       {/* body is optional */}
       {body && <Flex row>{body}</Flex>}
@@ -56,9 +57,8 @@ export default function Card(
       </Flex>
 
       <Dialog
+        goalId={goal?.id}
         open={openDialog}
-        header={header}
-        body={body}
         onClose={() => setOpenDialog(false)}
       />
     </Flex>

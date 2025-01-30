@@ -1,8 +1,12 @@
 "use client";
 import clsx from "clsx";
-import Flex, { HasClasses, SpacingProps } from "@/components/atoms/flex/flex";
+import Flex, {
+  HasBorder,
+  HasClasses,
+  HasTone,
+  SpacingProps,
+} from "@/components/atoms/flex/flex";
 import globalStyles from "@/app/ui/global.module.css";
-import { ToneTypes } from "@/components//molecules/card/card";
 import buttonStyles from "./button.module.css";
 import { ReactNode } from "react";
 import flexStyles from "@/components/atoms/flex/flex.module.css";
@@ -15,20 +19,19 @@ type CommonButtonProps = Readonly<{
   text: ReactNode;
 }>;
 
-export type HasTone = Readonly<{
-  tone?: ToneTypes;
-}>;
-
 export type ButtonProps = CommonButtonProps &
   HasClasses &
   HasTone &
+  HasBorder &
   OnClickProps &
   SpacingProps;
 
 // TODO: allow any component to be passed as a prop
+
 export default function Button(props: ButtonProps) {
   const {
     text,
+    border = true,
     tone = "neutral",
     onClick,
     className,
@@ -44,7 +47,7 @@ export default function Button(props: ButtonProps) {
     <div onClick={onClick}>
       <Flex
         row
-        border
+        border={border}
         p={p}
         {...restSpacingProps}
         className={clsx(

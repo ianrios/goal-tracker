@@ -1,3 +1,4 @@
+"use client";
 import Icon, { BaseIconProps } from "@/components/atoms/icon/icon";
 import Flex, { HasBorder, SpacingProps } from "../../atoms/flex/flex";
 

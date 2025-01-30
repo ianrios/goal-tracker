@@ -23,22 +23,94 @@
   flex-direction: column-reverse;
 }
 
-/* Alignment classes - need to refine */
+/* Align classes - need to refine */
+
+.align-content-center {
+  align-content: center;
+}
+.align-content-end {
+  align-content: end;
+}
+.align-content-start {
+  align-content: start;
+}
 
 .align-items-center {
   align-items: center;
+}
+.align-items-end {
+  align-items: end;
+}
+.align-items-start {
+  align-items: start;
 }
 
 .align-self-center {
   align-self: center;
 }
+.align-self-end {
+  align-self: end;
+}
+.align-self-start {
+  align-self: start;
+}
 
+/* Justify classes - need to refine */
 .justify-content-center {
   justify-content: center;
 }
+.justify-content-end {
+  justify-content: end;
+}
+.justify-content-start {
+  justify-content: start;
+}
+
 .justify-items-center {
   justify-items: center;
 }
+.justify-items-end {
+  justify-items: end;
+}
+.justify-items-start {
+  justify-items: start;
+}
+
 .justify-self-center {
   justify-self: center;
+}
+.justify-self-end {
+  justify-self: end;
+}
+.justify-self-start {
+  justify-self: start;
+}
+
+/* Overflow classes - need to refine */
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+.overflow-y-hidden {
+  overflow-y: hidden;
 }

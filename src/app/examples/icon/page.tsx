@@ -1,3 +1,4 @@
+"use client";
 import Flex from "@/components/atoms/flex/flex";
 import clsx from "clsx";
 import Icon, { IconMap, IconName } from "@/components/atoms/icon/icon";

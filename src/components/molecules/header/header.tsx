@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import headerStyles from "./header.module.css";
 import Flex, { CanGrow, SpacingProps } from "@/components/atoms/flex/flex";

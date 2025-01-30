@@ -18,11 +18,11 @@ body {
 
 /* border styles */
 .border {
-  border-width: 1px;
   border-style: solid;
 }
 
 .borderRounded {
+  border-width: 1px;
   border-radius: 0.25rem;
 }
 

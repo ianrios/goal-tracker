@@ -21,6 +21,11 @@ export default function Page() {
       <Flex row gap={2}>
         <Button onClick={clickAction} text="click me to trigger an action!" />
         <Button onClick={routeAction} text="click me to navigate to a route!" />
+        <Button
+          onClick={clickAction}
+          border={false}
+          text="this button has no border!"
+        />
       </Flex>
     </PageLayout>
   );

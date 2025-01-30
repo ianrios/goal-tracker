@@ -6,19 +6,46 @@ import Dialog from "@/components/organisms/dialog/dialog";
 import { useState } from "react";
 
 export default function Page() {
-  const [open, setOpen] = useState<boolean>(false);
+  const [openUndefinedGoalDialog, setOpenUndefinedGoalDialog] =
+    useState<boolean>(false);
+  const [openUnknownGoalDialog, setOpenUnknownGoalDialog] =
+    useState<boolean>(false);
+  const [openKnownGoalDialog, setOpenKnownGoalDialog] =
+    useState<boolean>(false);
+
+  const exampleUnknownId = "blah";
+  const exampleKnownId = "8n6e0804-2b38-temp-b79d-d97027f9071a";
 
   return (
     <PageLayout>
       <Flex row gap={2}>
-        <Button onClick={() => setOpen(true)} text="open dialog" />
-        <Dialog
-          open={open}
-          onClose={() => setOpen(false)}
-          header="content here!"
-          body="even more good stuff to come"
+        <Button
+          onClick={() => setOpenUndefinedGoalDialog(true)}
+          text="open dialog with undefined goal"
+        />
+        <Button
+          onClick={() => setOpenUnknownGoalDialog(true)}
+          text="open dialog with incorrect goal"
+        />
+        <Button
+          onClick={() => setOpenKnownGoalDialog(true)}
+          text="open dialog with known goal"
         />
       </Flex>
+      <Dialog
+        open={openUndefinedGoalDialog}
+        onClose={() => setOpenUndefinedGoalDialog(false)}
+      />
+      <Dialog
+        goalId={exampleUnknownId}
+        open={openUnknownGoalDialog}
+        onClose={() => setOpenUnknownGoalDialog(false)}
+      />
+      <Dialog
+        goalId={exampleKnownId}
+        open={openKnownGoalDialog}
+        onClose={() => setOpenKnownGoalDialog(false)}
+      />
     </PageLayout>
   );
 }

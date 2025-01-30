@@ -7,25 +7,25 @@ things to do
 - [x] create the mvp
 - [x] refine the mvp
 - [x] gap prop for flex
+- [x] modal / dialog component
+- [x] expand button on goal
+- [x] add justify props to flex
+- [x] add align props to flex
+- [x] use the sub goals array on the app to group the goals
+- [x] button hover, active, and focus effects
+- [x] see children goals or tasks on parent goal
+- [x] see parent goal on child goal or task
 - [ ] create a database that i can run locally
-- [ ] use the sub goals array on the app to group the goals
-- [ ] button hover, active, and click effects
 - [ ] form component
 - [ ] input component
-- [ ] modal / dialog component
-- [ ] expand button on goal
 - [ ] different border color or texture on goal vs task (can tasks have less features?)
 - [ ] convert task to goal (mark as a change in the db)
-- [ ] convert goal to task (only if possible, no child goals, no child tasks, no info, just title)
-- [ ] see children goals or tasks on parent goal
-- [ ] see parent goal on child goal or task
-- [ ] high level overview (x complete) on minimized card
+- [ ] convert goal to task (only if possible, no child goals, no child tasks, no body, just title)
+- [ ] high level overview (x child goals complete (if child goals exist)) on minimized card
 - [ ] button component that has text AND icon (select left or right via prop)
 - [ ] scrape all the goals for notes on what to do in the app
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] create list of tones and use for buttons, background hover, active outline, borders, icon color, and text
+- [ ] create filters section (instead of having lame buttons)
 - [ ]
 - [ ]
 - [ ]

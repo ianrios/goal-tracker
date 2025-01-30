@@ -1,4 +1,5 @@
-import Flex from "@/components/atoms/flex/flex";
+"use client";
+import Flex, { ToneOptions } from "@/components/atoms/flex/flex";
 import { tempData } from "@/util/temp-data";
 import Drawer from "@/components/organisms/drawer/drawer";
 import { useState } from "react";
@@ -42,7 +43,7 @@ export default function Home() {
   const completedGoals = allGoals.filter((goal) => !!goal.completedAt);
 
   const filteredGoals = [
-    { title: "Past Due Goals", goals: pastDueGoals },
+    { title: "Past Due Goals (incompleted)", goals: pastDueGoals },
     { title: "Daily Goals", goals: dailyGoals },
     { title: "Weekly Goals", goals: weeklyGoals },
     { title: "Monthly Goals", goals: monthlyGoals },
@@ -54,25 +55,30 @@ export default function Home() {
   return (
     <Flex col border gap={2} p={2}>
       <Flex row border gap={2} p={2}>
-        done filter
+        filtering done? {filterDone ? "true" : "false"}
         <IconButton
           onClick={() => setFilterDone(!filterDone)}
-          name={filterDone ? IconName.Filter : IconName.FilterFill}
+          name={filterDone ? IconName.FilterFill : IconName.Filter}
         />
-        past due filter
+        filtering done? {filterPastDue ? "true" : "false"}
         <IconButton
           onClick={() => setFilterPastDue(!filterPastDue)}
-          name={filterPastDue ? IconName.Filter : IconName.FilterFill}
+          name={filterPastDue ? IconName.FilterFill : IconName.Filter}
         />
       </Flex>
       {filteredGoals.map(
         ({ title, goals }) =>
           goals.length > 0 && (
             <Drawer
+              expanded={title !== "Completed Goals"}
               key={title}
               title={title}
               goals={goals}
-              tone={title === "Past Due Goals" ? "alert" : "neutral"}
+              tone={
+                title === "Past Due Goals (incompleted)"
+                  ? ToneOptions.Alert
+                  : ToneOptions.Neutral
+              }
             />
           )
       )}

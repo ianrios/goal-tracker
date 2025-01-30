@@ -1,3 +1,4 @@
+"use client";
 import Card from "@/components/molecules/card/card";
 import Flex from "@/components/atoms/flex/flex";
 import PageLayout from "@/components/organisms/page-layout/page-layout";

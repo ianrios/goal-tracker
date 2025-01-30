@@ -8,19 +8,54 @@ export function isUndefined(value: unknown): value is undefined {
   return value === undefined;
 }
 
-enum FlexDirection {
+enum FlexDirectionOptions {
   Col = "col-forward",
   Row = "row-forward",
   ColReverse = "col-reverse",
   RowReverse = "row-reverse",
 }
 
-export const ToneSelector = {
-  info: "info",
-  neutral: "neutral",
-  alert: "alert",
-  success: "success",
-};
+export enum FlexOverflowOptions {
+  OverflowAuto = "overflow-auto",
+  OverflowScroll = "overflow-scroll",
+  OverflowHidden = "overflow-hidden",
+  OverflowXAuto = "overflow-x-auto",
+  OverflowXScroll = "overflow-x-scroll",
+  OverflowXHidden = "overflow-x-hidden",
+  OverflowYAuto = "overflow-y-auto",
+  OverflowYScroll = "overflow-y-scroll",
+  OverflowYHidden = "overflow-y-hidden",
+}
+
+enum FlexAlignOptions {
+  AlignContentCenter = "align-content-center",
+  AlignContentEnd = "align-content-end",
+  AlignContentStart = "align-content-start",
+  AlignItemsCenter = "align-items-center",
+  AlignItemsEnd = "align-items-end",
+  AlignItemsStart = "align-items-start",
+  AlignSelfCenter = "align-self-center",
+  AlignSelfEnd = "align-self-end",
+  AlignSelfStart = "align-self-start",
+}
+export enum FlexJustifyOptions {
+  JustifyContentCenter = "justify-content-center",
+  JustifyContentEnd = "justify-content-end",
+  JustifyContentStart = "justify-content-start",
+  JustifyItemsCenter = "justify-items-center",
+  JustifyItemsEnd = "justify-items-end",
+  JustifyItemsStart = "justify-items-start",
+  JustifySelfCenter = "justify-self-center",
+  JustifySelfEnd = "justify-self-end",
+  JustifySelfStart = "justify-self-start",
+}
+
+export enum ToneOptions {
+  Info = "info",
+  Neutral = "neutral",
+  Alert = "alert",
+  Success = "success",
+}
 
 // gap prop options
 export const gapSelector = {
@@ -215,8 +250,8 @@ export type HasBorder = Readonly<{
 }>;
 
 // TODO: use enum for this
-type HasTone = Readonly<{
-  tone?: keyof typeof ToneSelector;
+export type HasTone = Readonly<{
+  tone?: ToneOptions;
 }>;
 
 // TODO: use enum for this
@@ -247,6 +282,9 @@ export type CanGrow = Readonly<{
 
 type BaseFlexProps = Readonly<{
   reverse?: boolean;
+  align?: FlexAlignOptions;
+  justify?: FlexJustifyOptions;
+  overflow?: FlexOverflowOptions;
 }> &
   (RowProps | ColProps);
 
@@ -263,6 +301,12 @@ export default function Flex({
   children,
   className,
 
+  // align is defaulted to align-items-center
+  align = FlexAlignOptions.AlignContentCenter,
+  // justify is defaulted to justify-content-start
+  justify = FlexJustifyOptions.JustifyContentStart,
+  // overflow is defaulted to overflow-auto
+  overflow = FlexOverflowOptions.OverflowAuto,
   // reverse is defaulted to false
   reverse = false,
   // grow is defaulted to false
@@ -270,7 +314,7 @@ export default function Flex({
   // row, // row is not used but it is still a prop
   col,
   border = false, // border is defaulted to false, which means no border
-  tone = "neutral", // tone is defaulted to neutral
+  tone = ToneOptions.Neutral, // tone is defaulted to neutral
   // margin and padding props - none are defaulted
   m,
   mx,
@@ -290,8 +334,12 @@ export default function Flex({
   gap,
 }: FlexProps) {
   const direction = col
-    ? flexStyles[reverse ? FlexDirection.ColReverse : FlexDirection.Col]
-    : flexStyles[reverse ? FlexDirection.RowReverse : FlexDirection.Row];
+    ? flexStyles[
+        reverse ? FlexDirectionOptions.ColReverse : FlexDirectionOptions.Col
+      ]
+    : flexStyles[
+        reverse ? FlexDirectionOptions.RowReverse : FlexDirectionOptions.Row
+      ];
 
   const mValue = isUndefined(m) ? "-" : mSelector[m];
   const mXValue = isUndefined(mx) ? "-" : mXSelector[mx];
@@ -326,6 +374,10 @@ export default function Flex({
         direction,
 
         grow && flexStyles["flex-grow"],
+        flexStyles[align],
+        flexStyles[justify],
+        flexStyles[overflow],
+
         // margin and padding
         mValue !== "-" && globalStyles[mValue],
         mXValue !== "-" && globalStyles[mXValue],
@@ -345,7 +397,7 @@ export default function Flex({
         !isUndefined(gap) && globalStyles[gapSelector[gap]],
 
         (border || debugBorders) && globalStyles.border,
-        (border || debugBorders) && globalStyles.borderRounded,
+        globalStyles.borderRounded,
         (border || debugBorders) && globalStyles[borderTone],
         "flex", // add the name of the component to the atom / molecule classlist
         className

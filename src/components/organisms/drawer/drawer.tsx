@@ -1,14 +1,13 @@
 "use client";
-import Flex, { SpacingProps } from "@/components/atoms/flex/flex";
+import Flex, { HasTone, SpacingProps } from "@/components/atoms/flex/flex";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Goal } from "@/app/lib/definitions";
 import Card from "@/components/molecules/card/card";
 import IconButton from "@/components/molecules/icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
 import Header from "@/components/molecules/header/header";
 import flexStyles from "../../atoms/flex/flex.module.css";
-import { HasTone } from "@/components/molecules/button/button";
 
 // TODO: move to helper util
 const chunkArray = (array: Goal[], chunkSize: number) => {
@@ -22,13 +21,19 @@ const chunkArray = (array: Goal[], chunkSize: number) => {
 type BaseDrawerProps = Readonly<{
   title: string;
   goals: Goal[];
+  expanded?: boolean;
 }>;
 
 type DrawerProps = BaseDrawerProps & SpacingProps & HasTone;
 
 export default function Drawer(props: DrawerProps) {
-  const { title, tone, goals, ...restSpacingProps } = props;
+  const { title, tone, expanded = false, goals, ...restSpacingProps } = props;
   const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
+
+  useEffect(() => {
+    setDrawerExpanded(expanded);
+    // only set the drawer expanded state on load of the drawer, not on every state change
+  }, []);
   return (
     <Flex col border tone={tone} gap={2} p={2} {...restSpacingProps}>
       <Flex
@@ -48,9 +53,17 @@ export default function Drawer(props: DrawerProps) {
       {drawerExpanded &&
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
           <Flex key={chunkIndex} row border tone={tone} gap={2} p={2}>
-            {goalChunk.map((goal) => (
-              <Card key={goal.id} header={goal.title} body={goal.info} />
-            ))}
+            {goalChunk.map((goal) => {
+              const { header, body, ...restGoal } = goal;
+              return (
+                <Card
+                  key={goal.id}
+                  header={header}
+                  body={body}
+                  goal={restGoal}
+                />
+              );
+            })}
           </Flex>
         ))}
     </Flex>

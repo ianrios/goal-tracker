@@ -2,13 +2,25 @@
   display: flex;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 /* TODO: could these all be decided by clsx? */
-.row {
+.row-forward {
   flex-direction: row;
 }
 
-.col {
+.col-forward {
   flex-direction: column;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.col-reverse {
+  flex-direction: column-reverse;
 }
 
 /* Alignment classes - need to refine */

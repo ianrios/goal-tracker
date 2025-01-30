@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import flexStyles from "./flex.module.css";
 import globalStyles from "@/app/ui/global.module.css";
@@ -7,9 +8,11 @@ export function isUndefined(value: unknown): value is undefined {
   return value === undefined;
 }
 
-export enum FlexDirection {
-  Col = "col",
-  Row = "row",
+enum FlexDirection {
+  Col = "col-forward",
+  Row = "row-forward",
+  ColReverse = "col-reverse",
+  RowReverse = "row-reverse",
 }
 
 export const ToneSelector = {
@@ -238,18 +241,33 @@ export type HasGap = Readonly<{
   gap?: keyof typeof gapSelector;
 }>;
 
+export type CanGrow = Readonly<{
+  grow?: boolean;
+}>;
+
+type BaseFlexProps = Readonly<{
+  reverse?: boolean;
+}> &
+  (RowProps | ColProps);
+
 type FlexProps = HasChildren &
   HasBorder &
   HasTone &
+  CanGrow &
   HasClasses &
-  (RowProps | ColProps) &
+  BaseFlexProps &
   HasGap &
   SpacingProps;
 
 export default function Flex({
   children,
   className,
-  // row, // row is unused, but it is needed for prop options
+
+  // reverse is defaulted to false
+  reverse = false,
+  // grow is defaulted to false
+  grow = false,
+  // row, // row is not used but it is still a prop
   col,
   border = false, // border is defaulted to false, which means no border
   tone = "neutral", // tone is defaulted to neutral
@@ -271,7 +289,9 @@ export default function Flex({
   // gap props - not defaulted
   gap,
 }: FlexProps) {
-  const direction = col ? FlexDirection.Col : FlexDirection.Row;
+  const direction = col
+    ? flexStyles[reverse ? FlexDirection.ColReverse : FlexDirection.Col]
+    : flexStyles[reverse ? FlexDirection.RowReverse : FlexDirection.Row];
 
   const mValue = isUndefined(m) ? "-" : mSelector[m];
   const mXValue = isUndefined(mx) ? "-" : mXSelector[mx];
@@ -303,7 +323,9 @@ export default function Flex({
     <div
       className={clsx(
         flexStyles.flex,
-        flexStyles[direction],
+        direction,
+
+        grow && flexStyles["flex-grow"],
         // margin and padding
         mValue !== "-" && globalStyles[mValue],
         mXValue !== "-" && globalStyles[mXValue],

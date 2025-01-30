@@ -5,6 +5,8 @@ import globalStyles from "@/app/ui/global.module.css";
 import { HasTone } from "../button/button";
 import IconButton from "../icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
+import { useState } from "react";
+import Dialog from "@/components/organisms/dialog/dialog";
 
 export type ToneTypes = "info" | "neutral" | "alert" | "success";
 
@@ -29,6 +31,8 @@ export default function Card(
 
   // TODO: pass in border tone to the flex
 
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
   return (
     <Flex
       col
@@ -45,16 +49,18 @@ export default function Card(
 
       <Flex row gap={1}>
         <IconButton
-          name={IconName.Pencil}
+          name={IconName.CardText}
           p={1}
-          onClick={() => console.log(`edit name for ${header}`)}
-        />
-        <IconButton
-          name={IconName.Gear}
-          p={1}
-          onClick={() => console.log(`open settings for ${header}`)}
+          onClick={() => setOpenDialog(true)}
         />
       </Flex>
+
+      <Dialog
+        open={openDialog}
+        header={header}
+        body={body}
+        onClose={() => setOpenDialog(false)}
+      />
     </Flex>
   );
 }

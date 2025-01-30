@@ -15,6 +15,8 @@ export default function Home() {
 
   const allGoals = tempData;
 
+  const now = new Date();
+
   const filter = (goal: Goal, bucket: Bucket) => {
     if (filterDone && goal.completedAt) {
       return false;
@@ -32,9 +34,11 @@ export default function Home() {
   const dailyGoals = allGoals.filter((goal) => filter(goal, Buckets.Day));
 
   // Past due goals can still rely on the date comparison
-  const pastDueGoals = allGoals.filter(
-    (goal) => goal.deadline < new Date() && !goal.completedAt
-  );
+  const pastDueGoals = allGoals.filter((goal) => {
+    const goalDate = new Date(goal.deadline.toDateString());
+    const nowDate = new Date(now.toDateString());
+    return goalDate < nowDate && !goal.completedAt;
+  });
   const completedGoals = allGoals.filter((goal) => !!goal.completedAt);
 
   const filteredGoals = [

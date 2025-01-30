@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import headerStyles from "./header.module.css";
-import Flex, { SpacingProps } from "@/components/atoms/flex/flex";
+import Flex, { CanGrow, SpacingProps } from "@/components/atoms/flex/flex";
 import flexStyles from "@/components/atoms/flex/flex.module.css";
 
 type BaseHeaderProps = Readonly<{
@@ -8,7 +8,7 @@ type BaseHeaderProps = Readonly<{
   text: string;
 }>;
 
-type HeaderProps = BaseHeaderProps & SpacingProps;
+type HeaderProps = BaseHeaderProps & CanGrow & SpacingProps;
 
 export default function Header(props: HeaderProps) {
   const { size = 2, text, ...restSpacingProps } = props;

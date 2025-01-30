@@ -1,26 +1,33 @@
+"use client";
 import {
   BsArrowDownCircle,
   BsArrowLeftCircle,
   BsArrowRightCircle,
   BsArrowUpCircle,
+  BsCardText,
   BsDashCircle,
   BsFilterCircle,
   BsFilterCircleFill,
   BsGear,
   BsPencil,
+  BsX,
+  BsXLg,
 } from "react-icons/bs";
 import { VscBracketError } from "react-icons/vsc";
 
 export enum IconName {
   Filter = "BsFilterCircle",
   FilterFill = "BsFilterCircleFill",
-  Pencil = "pencil",
-  Negative = "negative",
-  Gear = "gear",
-  DownArrow = "downArrow",
-  UpArrow = "upArrow",
-  LeftArrow = "leftArrow",
-  RightArrow = "rightArrow",
+  Pencil = "BsPencil",
+  Negative = "BsDashCircle",
+  Gear = "BsGear",
+  DownArrow = "BsArrowDownCircle",
+  UpArrow = "BsArrowUpCircle",
+  LeftArrow = "BsArrowLeftCircle",
+  RightArrow = "BsArrowRightCircle",
+  CardText = "BsCardText",
+  CloseLarge = "BsXLg",
+  CloseSmall = "BsX",
 }
 
 export const IconMap: Record<IconName, React.ComponentType> = {
@@ -33,6 +40,9 @@ export const IconMap: Record<IconName, React.ComponentType> = {
   [IconName.UpArrow]: BsArrowUpCircle,
   [IconName.LeftArrow]: BsArrowLeftCircle,
   [IconName.RightArrow]: BsArrowRightCircle,
+  [IconName.CardText]: BsCardText,
+  [IconName.CloseLarge]: BsXLg,
+  [IconName.CloseSmall]: BsX,
 };
 
 export type BaseIconProps = Readonly<{

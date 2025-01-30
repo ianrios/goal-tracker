@@ -632,8 +632,8 @@ export const tempData: Goal[] = [
   {
     id: "8o6e0804-2b39-temb-b79d-d97027f9071a",
     createdAt: new Date("2025-01-08T00:00:00.741Z"),
-    updatedAt: new Date("2025-01-28T13:11:00.741Z"),
-    completedAt: null,
+    updatedAt: new Date("2025-01-29T13:11:00.741Z"),
+    completedAt: new Date("2025-01-29T13:11:00.741Z"),
     archivedAt: null,
     deletedAt: null,
     title: "charge anna, gladys, & amity",

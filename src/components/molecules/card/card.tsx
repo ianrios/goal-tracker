@@ -50,7 +50,7 @@ export default function Card(
 
       <Flex row gap={1}>
         <IconButton
-          name={IconName.CardText}
+          name={IconName.Expand}
           p={1}
           onClick={() => setOpenDialog(true)}
         />

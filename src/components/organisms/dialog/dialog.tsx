@@ -107,10 +107,9 @@ export default function Dialog({ goalId, open, onClose }: DialogProps) {
           <IconButton name={IconName.CloseLarge} onClick={onClose} />
         </Flex>
         {!isUndefined(goal) && (
-          <Flex row>
-            <Flex col grow>
-              put the deadline here
-            </Flex>
+          <Flex row gap={2}>
+            <Flex col>put the deadline here</Flex>
+            <Flex col>put the (1/12) progress bar here</Flex>
             <Flex col>put the action icons here</Flex>
           </Flex>
         )}

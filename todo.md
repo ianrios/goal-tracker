@@ -18,16 +18,21 @@ things to do
 - [ ] create a database that i can run locally
 - [ ] form component
 - [ ] input component
+- [ ] create list of tones and use for buttons, background hover, active outline, borders, icon color, and text
 - [ ] different border color or texture on goal vs task (can tasks have less features?)
 - [ ] convert task to goal (mark as a change in the db)
 - [ ] convert goal to task (only if possible, no child goals, no child tasks, no body, just title)
 - [ ] high level overview (x child goals complete (if child goals exist)) on minimized card
 - [ ] button component that has text AND icon (select left or right via prop)
 - [ ] scrape all the goals for notes on what to do in the app
-- [ ] create list of tones and use for buttons, background hover, active outline, borders, icon color, and text
 - [ ] create filters section (instead of having lame buttons)
-- [ ]
-- [ ]
+- [ ] push expand button to bottom of goal card
+- [ ] set a list of widths for flex to be able to take as props
+- [ ] set a list of min widths for flex to be able to take as props
+- [ ] set a list of max widths for flex to be able to take as props
+- [ ] set a list of heights for flex to be able to take as props
+- [ ] set a list of min heights for flex to be able to take as props
+- [ ] set a list of max heights for flex to be able to take as props
 - [ ]
 - [ ]
 

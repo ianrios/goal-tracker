@@ -3,14 +3,21 @@ import {
   BsArrowDownCircle,
   BsArrowLeftCircle,
   BsArrowRightCircle,
+  BsArrowsAngleExpand,
   BsArrowUpCircle,
+  BsBarChart,
+  BsBarChartLine,
+  BsBarChartSteps,
   BsBoxArrowInUpRight,
+  BsCalendarDate,
   BsCardText,
   BsDashCircle,
   BsFilterCircle,
   BsFilterCircleFill,
   BsGear,
+  BsList,
   BsPencil,
+  BsTable,
   BsTrash3,
   BsUiChecks,
   BsUiChecksGrid,
@@ -40,6 +47,13 @@ export enum IconName {
   RadiosGrid = "BsUiRadiosGrid",
   Trash = "BsTrash3",
   NewTab = "BsBoxArrowInUpRight",
+  Expand = "BsArrowsAngleExpand",
+  Table = "BsTable",
+  Calendar = "BsCalendarDate",
+  ChartSteps = "BsBarChartSteps",
+  ChartLine = "BsBarChartLine",
+  Chart = "BsBarChart",
+  List = "BsList",
 }
 
 // TODO: use enums better
@@ -62,7 +76,15 @@ export const IconMap: Record<IconName, React.ComponentType> = {
   [IconName.Radios]: BsUiRadios,
   [IconName.RadiosGrid]: BsUiRadiosGrid,
   [IconName.Trash]: BsTrash3,
+  [IconName.Table]: BsTable,
   [IconName.NewTab]: BsBoxArrowInUpRight,
+  [IconName.Expand]: BsArrowsAngleExpand,
+  [IconName.Calendar]: BsCalendarDate,
+  [IconName.ChartSteps]: BsBarChartSteps,
+  [IconName.ChartLine]: BsBarChartLine,
+  [IconName.Chart]: BsBarChart,
+  [IconName.List]: BsList, // there are more list
+  // get chevron
 };
 
 export type BaseIconProps = Readonly<{

@@ -55,13 +55,15 @@ export default function Home() {
   return (
     <Flex col border gap={2} p={2}>
       <Flex row border gap={2} p={2}>
-        filtering done? {filterDone ? "true" : "false"}
         <IconButton
+          reverse
+          text={`filtering done? ${filterDone ? "Y" : "N"}`}
           onClick={() => setFilterDone(!filterDone)}
           name={filterDone ? IconName.FilterFill : IconName.Filter}
         />
-        filtering done? {filterPastDue ? "true" : "false"}
         <IconButton
+          reverse
+          text={`filtering past due? ${filterPastDue ? "Y" : "N"}`}
           onClick={() => setFilterPastDue(!filterPastDue)}
           name={filterPastDue ? IconName.FilterFill : IconName.Filter}
         />

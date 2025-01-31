@@ -10,7 +10,7 @@ import Header from "@/components/molecules/header/header";
 import flexStyles from "../../atoms/flex/flex.module.css";
 
 // TODO: move to helper util
-const chunkArray = (array: Goal[], chunkSize: number) => {
+export const chunkArray = (array: Goal[] | string[], chunkSize: number) => {
   const chunks = [];
   for (let i = 0; i < array.length; i += chunkSize) {
     chunks.push(array.slice(i, i + chunkSize));
@@ -33,6 +33,7 @@ export default function Drawer(props: DrawerProps) {
   useEffect(() => {
     setDrawerExpanded(expanded);
     // only set the drawer expanded state on load of the drawer, not on every state change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Flex col border tone={tone} gap={2} p={2} {...restSpacingProps}>
@@ -54,10 +55,11 @@ export default function Drawer(props: DrawerProps) {
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
           <Flex key={chunkIndex} row border tone={tone} gap={2} p={2}>
             {goalChunk.map((goal) => {
-              const { header, body, ...restGoal } = goal;
+              const knownGoal = goal as unknown as Goal;
+              const { header, body, ...restGoal } = knownGoal;
               return (
                 <Card
-                  key={goal.id}
+                  key={knownGoal.id}
                   header={header}
                   body={body}
                   goal={restGoal}

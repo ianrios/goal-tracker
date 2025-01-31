@@ -3,7 +3,10 @@ import clsx from "clsx";
 import Flex, {
   HasBorder,
   HasClasses,
+  HasGap,
+  HasPositioning,
   HasTone,
+  IsReversible,
   SpacingProps,
 } from "@/components/atoms/flex/flex";
 import globalStyles from "@/app/ui/global.module.css";
@@ -22,7 +25,10 @@ type CommonButtonProps = Readonly<{
 export type ButtonProps = CommonButtonProps &
   HasClasses &
   HasTone &
+  IsReversible &
+  HasPositioning &
   HasBorder &
+  HasGap &
   OnClickProps &
   SpacingProps;
 

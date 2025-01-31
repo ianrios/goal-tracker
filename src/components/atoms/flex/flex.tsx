@@ -27,7 +27,7 @@ export enum FlexOverflowOptions {
   OverflowYHidden = "overflow-y-hidden",
 }
 
-enum FlexAlignOptions {
+export enum FlexAlignOptions {
   AlignContentCenter = "align-content-center",
   AlignContentEnd = "align-content-end",
   AlignContentStart = "align-content-start",
@@ -42,6 +42,7 @@ export enum FlexJustifyOptions {
   JustifyContentCenter = "justify-content-center",
   JustifyContentEnd = "justify-content-end",
   JustifyContentStart = "justify-content-start",
+  JustifyContentSpaceBetween = "justify-content-space-between",
   JustifyItemsCenter = "justify-items-center",
   JustifyItemsEnd = "justify-items-end",
   JustifyItemsStart = "justify-items-start",
@@ -241,10 +242,12 @@ type ColProps = Readonly<{
   col: true;
   row?: never;
 }>;
+
 type RowProps = Readonly<{
   col?: never;
   row: true;
 }>;
+
 export type HasBorder = Readonly<{
   border?: boolean;
 }>;
@@ -279,11 +282,16 @@ export type HasGap = Readonly<{
 export type CanGrow = Readonly<{
   grow?: boolean;
 }>;
-
-type BaseFlexProps = Readonly<{
+export type IsReversible = Readonly<{
   reverse?: boolean;
+}>;
+
+export type HasPositioning = Readonly<{
   align?: FlexAlignOptions;
   justify?: FlexJustifyOptions;
+}>;
+
+type BaseFlexProps = Readonly<{
   overflow?: FlexOverflowOptions;
 }> &
   (RowProps | ColProps);
@@ -292,6 +300,8 @@ type FlexProps = HasChildren &
   HasBorder &
   HasTone &
   CanGrow &
+  HasPositioning &
+  IsReversible &
   HasClasses &
   BaseFlexProps &
   HasGap &

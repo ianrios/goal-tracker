@@ -65,6 +65,9 @@
 .justify-content-start {
   justify-content: start;
 }
+.justify-content-space-between {
+  justify-content: space-between;
+}
 
 .justify-items-center {
   justify-items: center;

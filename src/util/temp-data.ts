@@ -767,7 +767,7 @@ export const tempData: Goal[] = [
     id: "8y6e0804-2b49-temp-b79d-d97027f1071a",
     createdAt: new Date("2025-01-01T13:11:00.741Z"),
     updatedAt: new Date("2025-01-30T13:11:00.741Z"),
-    completedAt: null,
+    completedAt: new Date("2025-01-30T20:11:00.741Z"),
     archivedAt: null,
     deletedAt: null,
     header: "tidy kitchen and make cauliflower",

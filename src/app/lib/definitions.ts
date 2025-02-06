@@ -22,9 +22,9 @@ export type Goal = {
   completedAt: Date | null;
   archivedAt: Date | null;
   deletedAt: Date | null;
+  deadline: Date;
   header: string;
   body: string;
-  deadline: Date;
   // TODO: figure out how to differentiate the types of goals (and life goals do not need a deadline)
   bucket: Bucket;
 };

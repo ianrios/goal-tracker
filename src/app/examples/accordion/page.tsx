@@ -1,22 +1,22 @@
 "use client";
 import { Buckets } from "@/app/lib/definitions";
 import Header from "@/components/molecules/header/header";
-import Drawer from "@/components/organisms/drawer/drawer";
+import Accordion from "@/components/organisms/accordion/accordion";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 
 export default function Page() {
-  // TODO: make the drawer accept any kind of js not just goals
-  // or rename the drawer to a goals drawer or something
+  // TODO: make the accordion accept any kind of js not just goals
+  // or rename the accordion to a goals accordion or something
   // does it matter?
   return (
     <PageLayout>
       <Header
         size={3}
-        text="the Drawer has mt, mx, pb, & mb props set to 2 but can be overridden"
+        text="the Accordion has mt, mx, pb, & mb props set to 2 but can be overridden"
       />
-      <Drawer
+      <Accordion
         expanded
-        title={"example drawer"}
+        title={"example accordion"}
         goals={[
           {
             id: "8a6e0804-0000-4672-b79d-d97027f9071b",

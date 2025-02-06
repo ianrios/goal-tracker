@@ -10,7 +10,7 @@ export default function Page() {
     "button",
     "card",
     "dialog",
-    "drawer",
+    "accordion",
     "flex",
     "header",
     "icon",

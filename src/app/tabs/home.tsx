@@ -1,7 +1,7 @@
 "use client";
 import Flex, { ToneOptions } from "@/components/atoms/flex/flex";
 import { tempData } from "@/util/temp-data";
-import Drawer from "@/components/organisms/drawer/drawer";
+import Accordion from "@/components/organisms/accordion/accordion";
 import { useState } from "react";
 import IconButton from "@/components/molecules/icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
@@ -19,28 +19,56 @@ export default function Home() {
   const now = new Date();
 
   const filter = (goal: Goal, bucket: Bucket) => {
+    // TODO: create one large filter function to be used in all buckets
+    if (goal.archivedAt) {
+      return false;
+    }
+    if (goal.deletedAt) {
+      return false;
+    }
     if (filterDone && goal.completedAt) {
       return false;
     }
-    if (filterPastDue && goal.deadline < new Date()) {
+    const goalDate = new Date(goal.deadline.toDateString());
+    const nowDate = new Date(now.toDateString());
+    if (filterPastDue && goalDate < nowDate) {
       return false;
     }
     return goal.bucket === bucket;
   };
 
+  // These we filter for each bucket
   const yearlyGoals = allGoals.filter((goal) => filter(goal, Buckets.Year));
   const quarterGoals = allGoals.filter((goal) => filter(goal, Buckets.Quarter));
   const monthlyGoals = allGoals.filter((goal) => filter(goal, Buckets.Month));
   const weeklyGoals = allGoals.filter((goal) => filter(goal, Buckets.Week));
   const dailyGoals = allGoals.filter((goal) => filter(goal, Buckets.Day));
 
-  // Past due goals can still rely on the date comparison
+  // these do not depend on a specific bucket
+  // Past due goals can still rely on the date comparison but do not care which bucket they live in
   const pastDueGoals = allGoals.filter((goal) => {
+    if (goal.archivedAt) {
+      return false;
+    }
+    if (goal.deletedAt) {
+      return false;
+    }
+    if (goal.completedAt) {
+      return false;
+    }
     const goalDate = new Date(goal.deadline.toDateString());
     const nowDate = new Date(now.toDateString());
-    return goalDate < nowDate && !goal.completedAt;
+    return goalDate < nowDate;
   });
-  const completedGoals = allGoals.filter((goal) => !!goal.completedAt);
+  const completedGoals = allGoals.filter((goal) => {
+    if (goal.archivedAt) {
+      return false;
+    }
+    if (goal.deletedAt) {
+      return false;
+    }
+    return !!goal.completedAt;
+  });
 
   const filteredGoals = [
     { title: "Past Due Goals (incompleted)", goals: pastDueGoals },
@@ -71,7 +99,7 @@ export default function Home() {
       {filteredGoals.map(
         ({ title, goals }) =>
           goals.length > 0 && (
-            <Drawer
+            <Accordion
               expanded={title !== "Completed Goals"}
               key={title}
               title={title}

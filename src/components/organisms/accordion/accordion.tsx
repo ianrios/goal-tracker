@@ -18,21 +18,21 @@ export const chunkArray = (array: Goal[] | string[], chunkSize: number) => {
   return chunks;
 };
 
-type BaseDrawerProps = Readonly<{
+type BaseAccordionProps = Readonly<{
   title: string;
   goals: Goal[];
   expanded?: boolean;
 }>;
 
-type DrawerProps = BaseDrawerProps & SpacingProps & HasTone;
+type AccordionProps = BaseAccordionProps & SpacingProps & HasTone;
 
-export default function Drawer(props: DrawerProps) {
+export default function Accordion(props: AccordionProps) {
   const { title, tone, expanded = false, goals, ...restSpacingProps } = props;
-  const [drawerExpanded, setDrawerExpanded] = useState<boolean>(true);
+  const [accordionExpanded, setAccordionExpanded] = useState<boolean>(true);
 
   useEffect(() => {
-    setDrawerExpanded(expanded);
-    // only set the drawer expanded state on load of the drawer, not on every state change
+    setAccordionExpanded(expanded);
+    // only set the accordion expanded state on load of the accordion, not on every state change
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -46,12 +46,12 @@ export default function Drawer(props: DrawerProps) {
         className={clsx(flexStyles["align-items-center"])}
       >
         <IconButton
-          onClick={() => setDrawerExpanded(!drawerExpanded)}
-          name={drawerExpanded ? IconName.DownArrow : IconName.UpArrow}
+          onClick={() => setAccordionExpanded(!accordionExpanded)}
+          name={accordionExpanded ? IconName.DownArrow : IconName.UpArrow}
         />
         <Header text={title} size={2} />
       </Flex>
-      {drawerExpanded &&
+      {accordionExpanded &&
         chunkArray(goals, 4).map((goalChunk, chunkIndex) => (
           <Flex key={chunkIndex} row border tone={tone} gap={2} p={2}>
             {goalChunk.map((goal) => {

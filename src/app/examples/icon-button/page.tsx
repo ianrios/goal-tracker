@@ -4,7 +4,7 @@ import { IconMap, IconName } from "@/components/atoms/icon/icon";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
 import IconButton from "@/components/molecules/icon-button/icon-button";
 import Header from "@/components/molecules/header/header";
-import { chunkArray } from "@/components/organisms/drawer/drawer";
+import { chunkArray } from "@/components/organisms/accordion/accordion";
 
 export default function Page() {
   return (

@@ -33,7 +33,11 @@ things to do
 - [ ] set a list of heights for flex to be able to take as props
 - [ ] set a list of min heights for flex to be able to take as props
 - [ ] set a list of max heights for flex to be able to take as props
-- [ ]
+- [ ] Add info section to accordion header
+  - [ ] what month, week, day it currently is, etc. (how much time is left in this section, etc)
+  - [ ] add filters to each section. (interact with global filters, override if set (none, true, false))
+  - [ ] section settings button
+  - [ ] group edit all goals in this section
 - [ ]
 
 MVP:

@@ -37,13 +37,13 @@ things to do
     - [ ] archive many by ids (technically update)
     - [ ] complete one by id (technically update)
     - [ ] complete many by ids (technically update)
-  - [ ] create seeder private endpoint for database (uses create endpoint)
+  - [ ] create seeder private endpoint for database (uses create many endpoint)
+  - [ ] seed goals
+  - [ ] view goal data on app
   - [ ] figure out how to determine public vs private access
   - [ ] create backup script for all tables in database
   - [ ] create schema file?
   - [ ] create cache?
-  - [ ]
-  - [ ]
   - [ ]
   - [ ]
   - [ ]

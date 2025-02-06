@@ -2,6 +2,7 @@
 import Home from "./tabs/home";
 import { useRouter } from "next/navigation";
 import PageLayout from "@/components/organisms/page-layout/page-layout";
+import "reflect-metadata";
 
 // TODO: move this util constant somewhere else
 
@@ -25,6 +26,16 @@ export const navigateTo = (
 };
 
 export default function Page() {
+  // TODO: move this somewhere else
+  const fetchData = async () => {
+    const response = await fetch("/api/test");
+    const result = await response.json();
+
+    console.log({ result });
+  };
+
+  fetchData();
+
   // TODO: use all context wrappers here
   return (
     <PageLayout>

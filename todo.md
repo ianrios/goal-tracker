@@ -15,7 +15,39 @@ things to do
 - [x] button hover, active, and focus effects
 - [x] see children goals or tasks on parent goal
 - [x] see parent goal on child goal or task
-- [ ] create a database that i can run locally
+- [x] create a database that i can run locally
+- [ ] build up database service methods and api endpoints
+  - [ ] create public and private endpoints for database within pages/api
+  - [ ] create CRUD endpoints in public path for all table entities
+    - [ ] create one
+    - [ ] create many
+    - [ ] read one by id
+    - [ ] read all
+    - [ ] read all by status
+    - [ ] read all with relationships
+    - [ ] read one by id with status
+    - [ ] read one by id with status and relationships
+    - [ ] update one by id
+    - [ ] update many by ids
+    - [ ] update many by status
+    - [ ] update many by relationships
+    - [ ] delete one by id (soft delete, technically update)
+    - [ ] delete many by ids (soft delete, technically update)
+    - [ ] archive one by id (technically update)
+    - [ ] archive many by ids (technically update)
+    - [ ] complete one by id (technically update)
+    - [ ] complete many by ids (technically update)
+  - [ ] create seeder private endpoint for database (uses create endpoint)
+  - [ ] figure out how to determine public vs private access
+  - [ ] create backup script for all tables in database
+  - [ ] create schema file?
+  - [ ] create cache?
+  - [ ]
+  - [ ]
+  - [ ]
+  - [ ]
+  - [ ]
+- [ ]
 - [ ] form component
 - [ ] input component
 - [ ] create list of tones and use for buttons, background hover, active outline, borders, icon color, and text
@@ -38,7 +70,7 @@ things to do
   - [ ] add filters to each section. (interact with global filters, override if set (none, true, false))
   - [ ] section settings button
   - [ ] group edit all goals in this section
-- [ ]
+- [ ] come up with a way to visualize the tables in the app
 
 MVP:
 

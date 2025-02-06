@@ -14,6 +14,10 @@ export const navLinks = [
     name: "examples",
     route: "/examples",
   },
+  {
+    name: "api",
+    route: "/api",
+  },
 ];
 
 // TODO: move this util function somewhere else

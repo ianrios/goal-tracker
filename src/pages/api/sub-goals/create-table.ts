@@ -14,5 +14,5 @@ export default async function handler(
       child_goal_id SERIAL NOT NULL
     )`;
 
-  await query({ queryString, req, res, startLog: "Creating table sub_goals" });
+  await query({ queryString, res, startLog: "Creating table sub_goals" });
 }

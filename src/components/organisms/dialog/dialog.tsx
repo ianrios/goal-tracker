@@ -12,7 +12,8 @@ import dialogStyles from "./dialog.module.css";
 import globalStyles from "@/app/ui/global.module.css";
 import Header from "@/components/molecules/header/header";
 import { Goal } from "@/app/lib/definitions";
-import { tempData, tempSubGoalData } from "@/util/temp-data";
+import { tempSubGoalData } from "@/util/init";
+import { goals } from "@/pages/api/goals/data/init";
 
 type BaseDialogProps = Readonly<{
   goalId?: Goal["id"];
@@ -24,6 +25,9 @@ type DialogProps = BaseDialogProps;
 
 export default function Dialog({ goalId, open, onClose }: DialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  // const tempData: Goal[] = [];
+  const tempData = goals;
 
   useEffect(() => {
     const dialog = dialogRef.current;

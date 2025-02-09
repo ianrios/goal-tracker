@@ -1,11 +1,11 @@
 "use client";
 import Flex, { ToneOptions } from "@/components/atoms/flex/flex";
-import { tempData } from "@/util/temp-data";
 import Accordion from "@/components/organisms/accordion/accordion";
 import { useState } from "react";
 import IconButton from "@/components/molecules/icon-button/icon-button";
 import { IconName } from "@/components/atoms/icon/icon";
 import { Bucket, Buckets, Goal } from "../lib/definitions";
+import { goals } from "@/pages/api/goals/data/init";
 
 // TODO: this component and folder is living in the wrong location
 // TODO: create a "new section" button, section component, and type
@@ -14,7 +14,9 @@ export default function Home() {
   const [filterDone, setFilterDone] = useState<boolean>(true);
   const [filterPastDue, setFilterPastDue] = useState<boolean>(true);
 
-  const allGoals = tempData;
+  // const allGoals = tempData;
+  // const allGoals: Goal[] = [];
+  const allGoals = goals;
 
   const now = new Date();
 

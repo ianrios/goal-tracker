@@ -8,6 +8,7 @@ export default function Page() {
   const apiPaths = [
     { path: "goals/create-table" },
     { path: "sub-goals/create-table" },
+    { path: "goals/seed-table" },
   ];
 
   return (

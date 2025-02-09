@@ -1,11 +1,12 @@
 import query from "@/util/query";
 import { NextApiRequest, NextApiResponse } from "next";
+import { goalsTable } from "./schema";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const queryString = `CREATE TABLE IF NOT EXISTS goals (
+  const queryString = `CREATE TABLE IF NOT EXISTS ${goalsTable.name} (
       id SERIAL PRIMARY KEY,
       createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
       updatedAt TIMESTAMP,
@@ -17,5 +18,10 @@ export default async function handler(
       body TEXT NOT NULL,
       bucket TEXT NOT NULL
     )`;
-  await query({ queryString, req, res, startLog: "Creating table goals" });
+  await query({
+    queryString,
+    res,
+    startLog: "Creating table goals",
+    errorLog: "Error creating table goals:",
+  });
 }

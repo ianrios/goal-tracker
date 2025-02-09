@@ -12,7 +12,12 @@ export default async function handler(
       updatedAt TIMESTAMP,
       parent_goal_id SERIAL NOT NULL,
       child_goal_id SERIAL NOT NULL
-    )`;
+    );`;
 
-  await query({ queryString, res, startLog: "Creating table sub_goals" });
+  const result = await query({
+    queryString,
+    startLog: "Creating table sub_goals",
+  });
+
+  res.status(200).json(result);
 }

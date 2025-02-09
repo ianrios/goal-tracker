@@ -7,14 +7,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await getAll(res);
+  const goals = await getAll();
+
+  res.status(200).json(goals);
 }
 
-export async function getAll(res: NextApiResponse): Promise<Goal[]> {
-  const queryString = `SELECT * FROM ${goalsTable.name}`;
+export async function getAll(): Promise<Goal[]> {
+  const queryString = `SELECT * FROM ${goalsTable.name};`;
   const goals = await query({
     queryString,
-    res,
     startLog: "selecting all goals from the goals table",
   });
 

@@ -42,7 +42,7 @@ export async function insertOne(goal: Goal, res: NextApiResponse) {
     ""
   );
   // const values = `'${goal.id}', '${goal.createdAt}', '${goal.updatedAt}', '${goal.completedAt}', '${goal.archivedAt}', '${goal.deletedAt}', '${goal.deadline}', '${goal.header}', '${goal.body}', '${goal.bucket}'`;
-  const queryString = `INSERT INTO ${goalsTable.name} (${columns}) VALUES (${value})`;
+  const queryString = `INSERT INTO ${goalsTable.name} (${columns}) VALUES (${value});`;
   const result = await query({ queryString, startLog: "Inserting new goal" });
 
   res.status(200).json(result);
@@ -57,7 +57,12 @@ export async function insertMany(goals: Goal[], res: NextApiResponse) {
   (2, 1);
 
   */
-  const columnKeys = Object.keys(goal);
+  if (goals.length === 0) {
+    res.status(500).json({ error: "cannot run, no data to map over" });
+    return;
+  }
+
+  const columnKeys = Object.keys(goals[0]);
   const columns = columnKeys.reduce(
     (a, c) => (a.length === 0 ? c : `${a}, ${c}`),
     ""
@@ -73,7 +78,7 @@ export async function insertMany(goals: Goal[], res: NextApiResponse) {
     return a.length === 0 ? `(${value})` : `${a}, (${value})`;
   }, "");
 
-  const queryString = `INSERT INTO ${goalsTable.name} (${columns}) VALUES ${values}`;
+  const queryString = `INSERT INTO ${goalsTable.name} (${columns}) VALUES ${values};`;
 
   // const queryString = `INSERT INTO ${goalsTable.name} (id, createdAt, updatedAt, completedAt, archivedAt, deletedAt, deadline, header, body, bucket) values ('${goal.id}', '${goal.createdAt}', '${goal.updatedAt}', '${goal.completedAt}', '${goal.archivedAt}', '${goal.deletedAt}', '${goal.deadline}', '${goal.header}', '${goal.body}', '${goal.bucket}')`;
   const result = await query({ queryString, startLog: "Inserting new goal" });

@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const existingGoals = await getAll(res);
+  const existingGoals = await getAll();
 
   if (existingGoals.length > 0) {
     //   if there are rows, do not seed
@@ -23,7 +23,7 @@ export default async function handler(
   // we can seed - order does not matter, async out of order is ok, catch them all with promise all
   await Promise.all(goals.map(async (goal) => await insertOne(goal, res)));
 
-  const newGoals = await getAll(res);
+  const newGoals = await getAll();
 
   res.status(200).json(newGoals);
 }

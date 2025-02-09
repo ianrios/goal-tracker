@@ -17,11 +17,12 @@ export default async function handler(
       header TEXT NOT NULL,
       body TEXT NOT NULL,
       bucket TEXT NOT NULL
-    )`;
-  await query({
+    );`;
+  const table = await query({
     queryString,
-    res,
     startLog: "Creating table goals",
     errorLog: "Error creating table goals:",
   });
+
+  res.status(200).json(table);
 }
